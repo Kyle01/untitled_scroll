@@ -1,0 +1,106 @@
+﻿<mockup version="5.3" minAllowVersion="5.3" ID="A6E17A12-FDA3-E811-8E4E-8C8590801C7C" platform="MtWeb" defaultW="1100" defaultH="6000" measureW="1100" measureH="6000" mobileScreenScale="0">
+  <controls controlCount="12">
+    <control controlID="C63E3D32-FDA3-E811-8E4E-8C8590801C7C" controlTypeID="Shape" x="0" y="7" w="1100" h="67" zOrder="0">
+      <font family="" displayName="" postScript="" weightStyle="" weight="0" isBold="False" isItalic="False"/>
+      <text>About</text>
+      <textSize>18</textSize>
+      <textAlign>HaLeft</textAlign>
+      <useDefaultTextSize>False</useDefaultTextSize>
+    </control>
+    <control controlID="484B113E-FDA3-E811-8E4E-8C8590801C7C" controlTypeID="Icon" x="1026" y="7" w="54" h="54" zOrder="1">
+      <icon>
+        <ID/>
+        <iconFontName>jdIonicons</iconFontName>
+        <iconCode>62482</iconCode>
+      </icon>
+      <URL>D6C2DD17B4486AC488B136160291AB96.svg</URL>
+    </control>
+    <control controlID="4612B093-FDA3-E811-8E4E-8C8590801C7C" controlTypeID="Line" x="-6" y="1292" w="1106" h="5" zOrder="2">
+      <font family="" displayName="" postScript="" weightStyle="" weight="0" isBold="False" isItalic="False"/>
+      <textSize>14</textSize>
+      <lineSpacing>0</lineSpacing>
+      <controlPoint>(554,2)</controlPoint>
+      <startPoint>(2,2)</startPoint>
+      <endPoint>(1106,2)</endPoint>
+      <thickness>5</thickness>
+    </control>
+    <control controlID="262227AA-FDA3-E811-8E4E-8C8590801C7C" controlTypeID="Line" x="-6" y="0" w="1106" h="5" zOrder="3">
+      <font family="" displayName="" postScript="" weightStyle="" weight="0" isBold="False" isItalic="False"/>
+      <textSize>14</textSize>
+      <lineSpacing>0</lineSpacing>
+      <selectedIndex>-1</selectedIndex>
+      <controlPoint>(554,2)</controlPoint>
+      <startPoint>(2,2)</startPoint>
+      <endPoint>(1106,2)</endPoint>
+      <thickness>5</thickness>
+    </control>
+    <control controlID="E8E45AAB-FDA3-E811-8E4E-8C8590801C7C" controlTypeID="Line" x="-6" y="0" w="1106" h="5" zOrder="4">
+      <font family="" displayName="" postScript="" weightStyle="" weight="0" isBold="False" isItalic="False"/>
+      <textSize>14</textSize>
+      <lineSpacing>0</lineSpacing>
+      <selectedIndex>-1</selectedIndex>
+      <controlPoint>(554,2)</controlPoint>
+      <startPoint>(2,2)</startPoint>
+      <endPoint>(1106,2)</endPoint>
+      <thickness>5</thickness>
+    </control>
+    <control controlID="046759AF-FDA3-E811-8E4E-8C8590801C7C" controlTypeID="Line" x="-6" y="0" w="1106" h="5" zOrder="5">
+      <font family="" displayName="" postScript="" weightStyle="" weight="0" isBold="False" isItalic="False"/>
+      <textSize>14</textSize>
+      <lineSpacing>0</lineSpacing>
+      <selectedIndex>-1</selectedIndex>
+      <controlPoint>(554,2)</controlPoint>
+      <startPoint>(2,2)</startPoint>
+      <endPoint>(1106,2)</endPoint>
+      <thickness>5</thickness>
+    </control>
+    <control controlID="EC15C9B2-FDA3-E811-8E4E-8C8590801C7C" controlTypeID="Line" x="-5" y="268" w="1105" h="5" zOrder="6">
+      <font family="" displayName="" postScript="" weightStyle="" weight="0" isBold="False" isItalic="False"/>
+      <textSize>14</textSize>
+      <lineSpacing>0</lineSpacing>
+      <controlPoint>(554,2)</controlPoint>
+      <startPoint>(2,2)</startPoint>
+      <endPoint>(1105,2)</endPoint>
+      <thickness>5</thickness>
+    </control>
+    <control controlID="586F30BD-FDA3-E811-8E4E-8C8590801C7C" controlTypeID="Line" x="-2" y="1095" w="1104" h="5" zOrder="7">
+      <font family="" displayName="" postScript="" weightStyle="" weight="0" isBold="False" isItalic="False"/>
+      <textSize>14</textSize>
+      <lineSpacing>0</lineSpacing>
+      <controlPoint>(553,2)</controlPoint>
+      <startPoint>(2,2)</startPoint>
+      <endPoint>(1104,2)</endPoint>
+      <thickness>5</thickness>
+    </control>
+    <control controlID="1606E5CC-FDA3-E811-8E4E-8C8590801C7C" controlTypeID="Line" x="250" y="3" w="5" h="1500" zOrder="8">
+      <font family="" displayName="" postScript="" weightStyle="" weight="0" isBold="False" isItalic="False"/>
+      <textSize>14</textSize>
+      <lineSpacing>0</lineSpacing>
+      <controlPoint>(2,751)</controlPoint>
+      <startPoint>(2,2)</startPoint>
+      <endPoint>(2,1500)</endPoint>
+      <thickness>5</thickness>
+    </control>
+    <control controlID="DEEB9CFD-FDA3-E811-8E4E-8C8590801C7C" controlTypeID="Shape" x="0" y="273" w="250" h="822" zOrder="9">
+      <color>4294901760</color>
+      <font family="" displayName="" postScript="" weightStyle="" weight="0" isBold="False" isItalic="False"/>
+      <textSize>14</textSize>
+    </control>
+    <control controlID="58570A0A-FEA3-E811-8E4E-8C8590801C7C" controlTypeID="Shape" x="255" y="1100" w="845" h="192" zOrder="10">
+      <color>4294967040</color>
+      <font family="" displayName="" postScript="" weightStyle="" weight="0" isBold="False" isItalic="False"/>
+      <textSize>14</textSize>
+    </control>
+    <control controlID="9A51A311-FEA3-E811-8E4E-8C8590801C7C" controlTypeID="Shape" x="255" y="1292" w="845" h="211" zOrder="11">
+      <color>4278190335</color>
+      <font family="" displayName="" postScript="" weightStyle="" weight="0" isBold="False" isItalic="False"/>
+      <textSize>14</textSize>
+    </control>
+  </controls>
+  <param>
+    <backgroundColor>4294967295</backgroundColor>
+    <fontSize>0</fontSize>
+    <fontFamily/>
+    <guideLines/>
+  </param>
+</mockup>

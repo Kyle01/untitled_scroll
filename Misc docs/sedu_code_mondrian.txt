@@ -1,0 +1,19 @@
+Sedo code for painting Mondrians
+----
+
+1) get the window height and window
+2) Create a Div the size of the height and window
+3) Pick a number between 1 and 4
+    on a random generation, 50% of 1, 25% of 2, 17.5% of 3, 7.5% of 4
+    These will be vertical lines
+4) Pick a number between 1 and 5
+  on a random generation, 50% of 1, 25% of 2, 17.5% of 3, 7.5% of 4
+  This will be vertical lines
+5) Each of the squares made from the black lines will be divs
+6) Enter each div, paint it according to these rules:
+  a) if there is a color square adjacent to the current square, that color is ineligible
+  b) there is a 50% chance the square will remain white
+  c) there is a 50% chance it will be painted an eligible color (equal weight)
+7) Once all square have been completed, return the object
+8) repeat for next painting (with the same height and window wait)
+9) if the user scrolls and there is no backup, create a backup. Repeat infinitely 

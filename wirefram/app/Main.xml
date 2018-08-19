@@ -1,0 +1,21 @@
+﻿<project version="2.9" name="wirefram" ID="A6DC7A12-FDA3-E811-8E4E-8C8590801C7C">
+  <params>
+    <pageParam version="5.3" minAllowVersion="5.3"/>
+    <projectParam version="2.9" minAllowVersion="2.9" platform="MtWeb" pageSize="(1100,6000)" backgroundColor="4294967295" fontSize="0" fontFamily="" projectType="ptPersonalProject" isShowTitleIndex="False"/>
+    <previewParam version="1.0"/>
+    <colorParam version="1.0"/>
+  </params>
+  <pages>
+    <page name="Home" ID="A6E17A12-FDA3-E811-8E4E-8C8590801C7C" expanded="True" code="Ao5owy1DeL" thumbCode="Ao5owy1DeL" isLastOpen="True" status="psWhite" isfolder="False" isshownode="True">
+      <images>
+        <image key="D6C2DD17B4486AC488B136160291AB96.svg"/>
+      </images>
+    </page>
+  </pages>
+  <trash/>
+  <deletes/>
+  <masters/>
+  <images>
+    <image key="D6C2DD17B4486AC488B136160291AB96.svg"/>
+  </images>
+</project>
