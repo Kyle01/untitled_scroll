@@ -106,6 +106,14 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactWaypoint = __webpack_require__(/*! react-waypoint */ "./node_modules/react-waypoint/es/index.js");
+
+var _reactWaypoint2 = _interopRequireDefault(_reactWaypoint);
+
+var _painting = __webpack_require__(/*! ./painting */ "./frontend/components/painting.jsx");
+
+var _painting2 = _interopRequireDefault(_painting);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -113,14 +121,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Congrats = function Congrats() {
-  return _react2.default.createElement(
-    'h1',
-    null,
-    'Congratulations, you did it!'
-  );
-};
 
 var Art = function (_React$Component) {
   _inherits(Art, _React$Component);
@@ -132,12 +132,33 @@ var Art = function (_React$Component) {
   }
 
   _createClass(Art, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {}
+  }, {
+    key: 'getPaintings',
+    value: function getPaintings() {}
+  }, {
+    key: 'shedPaintings',
+    value: function shedPaintings() {}
+  }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
         'div',
         null,
-        'Hello from Art!'
+        _react2.default.createElement(_painting2.default, null),
+        _react2.default.createElement(_painting2.default, null),
+        _react2.default.createElement(_painting2.default, null),
+        _react2.default.createElement(_reactWaypoint2.default, { onEnter: function onEnter() {
+            console.log("entered");
+          },
+          onleave: function onleave() {
+            console.log("exit");
+          } }),
+        _react2.default.createElement(_painting2.default, null),
+        _react2.default.createElement(_painting2.default, null),
+        _react2.default.createElement(_painting2.default, null),
+        _react2.default.createElement(_painting2.default, null)
       );
     }
   }]);
@@ -146,6 +167,80 @@ var Art = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = Art;
+
+/***/ }),
+
+/***/ "./frontend/components/painting.jsx":
+/*!******************************************!*\
+  !*** ./frontend/components/painting.jsx ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Painting = function (_React$Component) {
+  _inherits(Painting, _React$Component);
+
+  function Painting() {
+    _classCallCheck(this, Painting);
+
+    return _possibleConstructorReturn(this, (Painting.__proto__ || Object.getPrototypeOf(Painting)).apply(this, arguments));
+  }
+
+  _createClass(Painting, [{
+    key: 'doStyling',
+    value: function doStyling() {
+      return {
+        backgroundColor: 'yellow',
+        height: '800px'
+      };
+    }
+  }, {
+    key: 'createPainting',
+    value: function createPainting() {
+      return _react2.default.createElement(
+        'div',
+        { style: this.doStyling() },
+        'This will be the painting'
+      );
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        null,
+        this.createPainting()
+      );
+    }
+  }]);
+
+  return Painting;
+}(_react2.default.Component);
+
+exports.default = Painting;
+
+//window.innerHeight or window.innerWidth
 
 /***/ }),
 
@@ -177,6 +272,226 @@ document.addEventListener("DOMContentLoaded", function () {
 	var root = document.getElementById("root");
 	_reactDom2.default.render(_react2.default.createElement(_art2.default, null), root);
 });
+
+/***/ }),
+
+/***/ "./node_modules/consolidated-events/lib/index.esm.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/consolidated-events/lib/index.esm.js ***!
+  \***********************************************************/
+/*! exports provided: addEventListener */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addEventListener", function() { return addEventListener; });
+var CAN_USE_DOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
+
+// Adapted from Modernizr
+// https://github.com/Modernizr/Modernizr/blob/acb3f0d9/feature-detects/dom/passiveeventlisteners.js#L26-L37
+function testPassiveEventListeners() {
+  if (!CAN_USE_DOM) {
+    return false;
+  }
+
+  if (!window.addEventListener || !window.removeEventListener || !Object.defineProperty) {
+    return false;
+  }
+
+  var supportsPassiveOption = false;
+  try {
+    var opts = Object.defineProperty({}, 'passive', {
+      // eslint-disable-next-line getter-return
+      get: function () {
+        function get() {
+          supportsPassiveOption = true;
+        }
+
+        return get;
+      }()
+    });
+    var noop = function noop() {};
+    window.addEventListener('testPassiveEventSupport', noop, opts);
+    window.removeEventListener('testPassiveEventSupport', noop, opts);
+  } catch (e) {
+    // do nothing
+  }
+
+  return supportsPassiveOption;
+}
+
+var memoized = void 0;
+
+function canUsePassiveEventListeners() {
+  if (memoized === undefined) {
+    memoized = testPassiveEventListeners();
+  }
+  return memoized;
+}
+
+function normalizeEventOptions(eventOptions) {
+  if (!eventOptions) {
+    return undefined;
+  }
+
+  if (!canUsePassiveEventListeners()) {
+    // If the browser does not support the passive option, then it is expecting
+    // a boolean for the options argument to specify whether it should use
+    // capture or not. In more modern browsers, this is passed via the `capture`
+    // option, so let's just hoist that value up.
+    return !!eventOptions.capture;
+  }
+
+  return eventOptions;
+}
+
+/* eslint-disable no-bitwise */
+
+/**
+ * Generate a unique key for any set of event options
+ */
+function eventOptionsKey(normalizedEventOptions) {
+  if (!normalizedEventOptions) {
+    return 0;
+  }
+
+  // If the browser does not support passive event listeners, the normalized
+  // event options will be a boolean.
+  if (normalizedEventOptions === true) {
+    return 100;
+  }
+
+  // At this point, the browser supports passive event listeners, so we expect
+  // the event options to be an object with possible properties of capture,
+  // passive, and once.
+  //
+  // We want to consistently return the same value, regardless of the order of
+  // these properties, so let's use binary maths to assign each property to a
+  // bit, and then add those together (with an offset to account for the
+  // booleans at the beginning of this function).
+  var capture = normalizedEventOptions.capture << 0;
+  var passive = normalizedEventOptions.passive << 1;
+  var once = normalizedEventOptions.once << 2;
+  return capture + passive + once;
+}
+
+function ensureCanMutateNextEventHandlers(eventHandlers) {
+  if (eventHandlers.handlers === eventHandlers.nextHandlers) {
+    // eslint-disable-next-line no-param-reassign
+    eventHandlers.nextHandlers = eventHandlers.handlers.slice();
+  }
+}
+
+function TargetEventHandlers(target) {
+  this.target = target;
+  this.events = {};
+}
+
+TargetEventHandlers.prototype.getEventHandlers = function () {
+  function getEventHandlers(eventName, options) {
+    var key = String(eventName) + ' ' + String(eventOptionsKey(options));
+
+    if (!this.events[key]) {
+      this.events[key] = {
+        handlers: [],
+        handleEvent: undefined
+      };
+      this.events[key].nextHandlers = this.events[key].handlers;
+    }
+
+    return this.events[key];
+  }
+
+  return getEventHandlers;
+}();
+
+TargetEventHandlers.prototype.handleEvent = function () {
+  function handleEvent(eventName, options, event) {
+    var eventHandlers = this.getEventHandlers(eventName, options);
+    eventHandlers.handlers = eventHandlers.nextHandlers;
+    eventHandlers.handlers.forEach(function (handler) {
+      if (handler) {
+        // We need to check for presence here because a handler function may
+        // cause later handlers to get removed. This can happen if you for
+        // instance have a waypoint that unmounts another waypoint as part of an
+        // onEnter/onLeave handler.
+        handler(event);
+      }
+    });
+  }
+
+  return handleEvent;
+}();
+
+TargetEventHandlers.prototype.add = function () {
+  function add(eventName, listener, options) {
+    var _this = this;
+
+    // options has already been normalized at this point.
+    var eventHandlers = this.getEventHandlers(eventName, options);
+
+    ensureCanMutateNextEventHandlers(eventHandlers);
+
+    if (eventHandlers.nextHandlers.length === 0) {
+      eventHandlers.handleEvent = this.handleEvent.bind(this, eventName, options);
+
+      this.target.addEventListener(eventName, eventHandlers.handleEvent, options);
+    }
+
+    eventHandlers.nextHandlers.push(listener);
+
+    var isSubscribed = true;
+    var unsubscribe = function () {
+      function unsubscribe() {
+        if (!isSubscribed) {
+          return;
+        }
+
+        isSubscribed = false;
+
+        ensureCanMutateNextEventHandlers(eventHandlers);
+        var index = eventHandlers.nextHandlers.indexOf(listener);
+        eventHandlers.nextHandlers.splice(index, 1);
+
+        if (eventHandlers.nextHandlers.length === 0) {
+          // All event handlers have been removed, so we want to remove the event
+          // listener from the target node.
+
+          if (_this.target) {
+            // There can be a race condition where the target may no longer exist
+            // when this function is called, e.g. when a React component is
+            // unmounting. Guarding against this prevents the following error:
+            //
+            //   Cannot read property 'removeEventListener' of undefined
+            _this.target.removeEventListener(eventName, eventHandlers.handleEvent, options);
+          }
+
+          eventHandlers.handleEvent = undefined;
+        }
+      }
+
+      return unsubscribe;
+    }();
+    return unsubscribe;
+  }
+
+  return add;
+}();
+
+var EVENT_HANDLERS_KEY = '__consolidated_events_handlers__';
+
+// eslint-disable-next-line import/prefer-default-export
+function addEventListener(target, eventName, listener, options) {
+  if (!target[EVENT_HANDLERS_KEY]) {
+    // eslint-disable-next-line no-param-reassign
+    target[EVENT_HANDLERS_KEY] = new TargetEventHandlers(target);
+  }
+  var normalizedEventOptions = normalizeEventOptions(options);
+  return target[EVENT_HANDLERS_KEY].add(eventName, listener, normalizedEventOptions);
+}
+
+
+
 
 /***/ }),
 
@@ -1050,6 +1365,608 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
 }
 
 module.exports = checkPropTypes;
+
+
+/***/ }),
+
+/***/ "./node_modules/prop-types/factoryWithTypeCheckers.js":
+/*!************************************************************!*\
+  !*** ./node_modules/prop-types/factoryWithTypeCheckers.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var assign = __webpack_require__(/*! object-assign */ "./node_modules/object-assign/index.js");
+
+var ReactPropTypesSecret = __webpack_require__(/*! ./lib/ReactPropTypesSecret */ "./node_modules/prop-types/lib/ReactPropTypesSecret.js");
+var checkPropTypes = __webpack_require__(/*! ./checkPropTypes */ "./node_modules/prop-types/checkPropTypes.js");
+
+var printWarning = function() {};
+
+if (true) {
+  printWarning = function(text) {
+    var message = 'Warning: ' + text;
+    if (typeof console !== 'undefined') {
+      console.error(message);
+    }
+    try {
+      // --- Welcome to debugging React ---
+      // This error was thrown as a convenience so that you can use this stack
+      // to find the callsite that caused this warning to fire.
+      throw new Error(message);
+    } catch (x) {}
+  };
+}
+
+function emptyFunctionThatReturnsNull() {
+  return null;
+}
+
+module.exports = function(isValidElement, throwOnDirectAccess) {
+  /* global Symbol */
+  var ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
+  var FAUX_ITERATOR_SYMBOL = '@@iterator'; // Before Symbol spec.
+
+  /**
+   * Returns the iterator method function contained on the iterable object.
+   *
+   * Be sure to invoke the function with the iterable as context:
+   *
+   *     var iteratorFn = getIteratorFn(myIterable);
+   *     if (iteratorFn) {
+   *       var iterator = iteratorFn.call(myIterable);
+   *       ...
+   *     }
+   *
+   * @param {?object} maybeIterable
+   * @return {?function}
+   */
+  function getIteratorFn(maybeIterable) {
+    var iteratorFn = maybeIterable && (ITERATOR_SYMBOL && maybeIterable[ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL]);
+    if (typeof iteratorFn === 'function') {
+      return iteratorFn;
+    }
+  }
+
+  /**
+   * Collection of methods that allow declaration and validation of props that are
+   * supplied to React components. Example usage:
+   *
+   *   var Props = require('ReactPropTypes');
+   *   var MyArticle = React.createClass({
+   *     propTypes: {
+   *       // An optional string prop named "description".
+   *       description: Props.string,
+   *
+   *       // A required enum prop named "category".
+   *       category: Props.oneOf(['News','Photos']).isRequired,
+   *
+   *       // A prop named "dialog" that requires an instance of Dialog.
+   *       dialog: Props.instanceOf(Dialog).isRequired
+   *     },
+   *     render: function() { ... }
+   *   });
+   *
+   * A more formal specification of how these methods are used:
+   *
+   *   type := array|bool|func|object|number|string|oneOf([...])|instanceOf(...)
+   *   decl := ReactPropTypes.{type}(.isRequired)?
+   *
+   * Each and every declaration produces a function with the same signature. This
+   * allows the creation of custom validation functions. For example:
+   *
+   *  var MyLink = React.createClass({
+   *    propTypes: {
+   *      // An optional string or URI prop named "href".
+   *      href: function(props, propName, componentName) {
+   *        var propValue = props[propName];
+   *        if (propValue != null && typeof propValue !== 'string' &&
+   *            !(propValue instanceof URI)) {
+   *          return new Error(
+   *            'Expected a string or an URI for ' + propName + ' in ' +
+   *            componentName
+   *          );
+   *        }
+   *      }
+   *    },
+   *    render: function() {...}
+   *  });
+   *
+   * @internal
+   */
+
+  var ANONYMOUS = '<<anonymous>>';
+
+  // Important!
+  // Keep this list in sync with production version in `./factoryWithThrowingShims.js`.
+  var ReactPropTypes = {
+    array: createPrimitiveTypeChecker('array'),
+    bool: createPrimitiveTypeChecker('boolean'),
+    func: createPrimitiveTypeChecker('function'),
+    number: createPrimitiveTypeChecker('number'),
+    object: createPrimitiveTypeChecker('object'),
+    string: createPrimitiveTypeChecker('string'),
+    symbol: createPrimitiveTypeChecker('symbol'),
+
+    any: createAnyTypeChecker(),
+    arrayOf: createArrayOfTypeChecker,
+    element: createElementTypeChecker(),
+    instanceOf: createInstanceTypeChecker,
+    node: createNodeChecker(),
+    objectOf: createObjectOfTypeChecker,
+    oneOf: createEnumTypeChecker,
+    oneOfType: createUnionTypeChecker,
+    shape: createShapeTypeChecker,
+    exact: createStrictShapeTypeChecker,
+  };
+
+  /**
+   * inlined Object.is polyfill to avoid requiring consumers ship their own
+   * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
+   */
+  /*eslint-disable no-self-compare*/
+  function is(x, y) {
+    // SameValue algorithm
+    if (x === y) {
+      // Steps 1-5, 7-10
+      // Steps 6.b-6.e: +0 != -0
+      return x !== 0 || 1 / x === 1 / y;
+    } else {
+      // Step 6.a: NaN == NaN
+      return x !== x && y !== y;
+    }
+  }
+  /*eslint-enable no-self-compare*/
+
+  /**
+   * We use an Error-like object for backward compatibility as people may call
+   * PropTypes directly and inspect their output. However, we don't use real
+   * Errors anymore. We don't inspect their stack anyway, and creating them
+   * is prohibitively expensive if they are created too often, such as what
+   * happens in oneOfType() for any type before the one that matched.
+   */
+  function PropTypeError(message) {
+    this.message = message;
+    this.stack = '';
+  }
+  // Make `instanceof Error` still work for returned errors.
+  PropTypeError.prototype = Error.prototype;
+
+  function createChainableTypeChecker(validate) {
+    if (true) {
+      var manualPropTypeCallCache = {};
+      var manualPropTypeWarningCount = 0;
+    }
+    function checkType(isRequired, props, propName, componentName, location, propFullName, secret) {
+      componentName = componentName || ANONYMOUS;
+      propFullName = propFullName || propName;
+
+      if (secret !== ReactPropTypesSecret) {
+        if (throwOnDirectAccess) {
+          // New behavior only for users of `prop-types` package
+          var err = new Error(
+            'Calling PropTypes validators directly is not supported by the `prop-types` package. ' +
+            'Use `PropTypes.checkPropTypes()` to call them. ' +
+            'Read more at http://fb.me/use-check-prop-types'
+          );
+          err.name = 'Invariant Violation';
+          throw err;
+        } else if ("development" !== 'production' && typeof console !== 'undefined') {
+          // Old behavior for people using React.PropTypes
+          var cacheKey = componentName + ':' + propName;
+          if (
+            !manualPropTypeCallCache[cacheKey] &&
+            // Avoid spamming the console because they are often not actionable except for lib authors
+            manualPropTypeWarningCount < 3
+          ) {
+            printWarning(
+              'You are manually calling a React.PropTypes validation ' +
+              'function for the `' + propFullName + '` prop on `' + componentName  + '`. This is deprecated ' +
+              'and will throw in the standalone `prop-types` package. ' +
+              'You may be seeing this warning due to a third-party PropTypes ' +
+              'library. See https://fb.me/react-warning-dont-call-proptypes ' + 'for details.'
+            );
+            manualPropTypeCallCache[cacheKey] = true;
+            manualPropTypeWarningCount++;
+          }
+        }
+      }
+      if (props[propName] == null) {
+        if (isRequired) {
+          if (props[propName] === null) {
+            return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required ' + ('in `' + componentName + '`, but its value is `null`.'));
+          }
+          return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required in ' + ('`' + componentName + '`, but its value is `undefined`.'));
+        }
+        return null;
+      } else {
+        return validate(props, propName, componentName, location, propFullName);
+      }
+    }
+
+    var chainedCheckType = checkType.bind(null, false);
+    chainedCheckType.isRequired = checkType.bind(null, true);
+
+    return chainedCheckType;
+  }
+
+  function createPrimitiveTypeChecker(expectedType) {
+    function validate(props, propName, componentName, location, propFullName, secret) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== expectedType) {
+        // `propValue` being instance of, say, date/regexp, pass the 'object'
+        // check, but we can offer a more precise error message here rather than
+        // 'of type `object`'.
+        var preciseType = getPreciseType(propValue);
+
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + preciseType + '` supplied to `' + componentName + '`, expected ') + ('`' + expectedType + '`.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createAnyTypeChecker() {
+    return createChainableTypeChecker(emptyFunctionThatReturnsNull);
+  }
+
+  function createArrayOfTypeChecker(typeChecker) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (typeof typeChecker !== 'function') {
+        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside arrayOf.');
+      }
+      var propValue = props[propName];
+      if (!Array.isArray(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an array.'));
+      }
+      for (var i = 0; i < propValue.length; i++) {
+        var error = typeChecker(propValue, i, componentName, location, propFullName + '[' + i + ']', ReactPropTypesSecret);
+        if (error instanceof Error) {
+          return error;
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createElementTypeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      if (!isValidElement(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createInstanceTypeChecker(expectedClass) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (!(props[propName] instanceof expectedClass)) {
+        var expectedClassName = expectedClass.name || ANONYMOUS;
+        var actualClassName = getClassName(props[propName]);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + actualClassName + '` supplied to `' + componentName + '`, expected ') + ('instance of `' + expectedClassName + '`.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createEnumTypeChecker(expectedValues) {
+    if (!Array.isArray(expectedValues)) {
+       true ? printWarning('Invalid argument supplied to oneOf, expected an instance of array.') : undefined;
+      return emptyFunctionThatReturnsNull;
+    }
+
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      for (var i = 0; i < expectedValues.length; i++) {
+        if (is(propValue, expectedValues[i])) {
+          return null;
+        }
+      }
+
+      var valuesString = JSON.stringify(expectedValues);
+      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of value `' + propValue + '` ' + ('supplied to `' + componentName + '`, expected one of ' + valuesString + '.'));
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createObjectOfTypeChecker(typeChecker) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (typeof typeChecker !== 'function') {
+        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside objectOf.');
+      }
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an object.'));
+      }
+      for (var key in propValue) {
+        if (propValue.hasOwnProperty(key)) {
+          var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+          if (error instanceof Error) {
+            return error;
+          }
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createUnionTypeChecker(arrayOfTypeCheckers) {
+    if (!Array.isArray(arrayOfTypeCheckers)) {
+       true ? printWarning('Invalid argument supplied to oneOfType, expected an instance of array.') : undefined;
+      return emptyFunctionThatReturnsNull;
+    }
+
+    for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
+      var checker = arrayOfTypeCheckers[i];
+      if (typeof checker !== 'function') {
+        printWarning(
+          'Invalid argument supplied to oneOfType. Expected an array of check functions, but ' +
+          'received ' + getPostfixForTypeWarning(checker) + ' at index ' + i + '.'
+        );
+        return emptyFunctionThatReturnsNull;
+      }
+    }
+
+    function validate(props, propName, componentName, location, propFullName) {
+      for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
+        var checker = arrayOfTypeCheckers[i];
+        if (checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret) == null) {
+          return null;
+        }
+      }
+
+      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`.'));
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createNodeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (!isNode(props[propName])) {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`, expected a ReactNode.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createShapeTypeChecker(shapeTypes) {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
+      }
+      for (var key in shapeTypes) {
+        var checker = shapeTypes[key];
+        if (!checker) {
+          continue;
+        }
+        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+        if (error) {
+          return error;
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createStrictShapeTypeChecker(shapeTypes) {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
+      }
+      // We need to check all keys in case some are required but missing from
+      // props.
+      var allKeys = assign({}, props[propName], shapeTypes);
+      for (var key in allKeys) {
+        var checker = shapeTypes[key];
+        if (!checker) {
+          return new PropTypeError(
+            'Invalid ' + location + ' `' + propFullName + '` key `' + key + '` supplied to `' + componentName + '`.' +
+            '\nBad object: ' + JSON.stringify(props[propName], null, '  ') +
+            '\nValid keys: ' +  JSON.stringify(Object.keys(shapeTypes), null, '  ')
+          );
+        }
+        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+        if (error) {
+          return error;
+        }
+      }
+      return null;
+    }
+
+    return createChainableTypeChecker(validate);
+  }
+
+  function isNode(propValue) {
+    switch (typeof propValue) {
+      case 'number':
+      case 'string':
+      case 'undefined':
+        return true;
+      case 'boolean':
+        return !propValue;
+      case 'object':
+        if (Array.isArray(propValue)) {
+          return propValue.every(isNode);
+        }
+        if (propValue === null || isValidElement(propValue)) {
+          return true;
+        }
+
+        var iteratorFn = getIteratorFn(propValue);
+        if (iteratorFn) {
+          var iterator = iteratorFn.call(propValue);
+          var step;
+          if (iteratorFn !== propValue.entries) {
+            while (!(step = iterator.next()).done) {
+              if (!isNode(step.value)) {
+                return false;
+              }
+            }
+          } else {
+            // Iterator will provide entry [k,v] tuples rather than values.
+            while (!(step = iterator.next()).done) {
+              var entry = step.value;
+              if (entry) {
+                if (!isNode(entry[1])) {
+                  return false;
+                }
+              }
+            }
+          }
+        } else {
+          return false;
+        }
+
+        return true;
+      default:
+        return false;
+    }
+  }
+
+  function isSymbol(propType, propValue) {
+    // Native Symbol.
+    if (propType === 'symbol') {
+      return true;
+    }
+
+    // 19.4.3.5 Symbol.prototype[@@toStringTag] === 'Symbol'
+    if (propValue['@@toStringTag'] === 'Symbol') {
+      return true;
+    }
+
+    // Fallback for non-spec compliant Symbols which are polyfilled.
+    if (typeof Symbol === 'function' && propValue instanceof Symbol) {
+      return true;
+    }
+
+    return false;
+  }
+
+  // Equivalent of `typeof` but with special handling for array and regexp.
+  function getPropType(propValue) {
+    var propType = typeof propValue;
+    if (Array.isArray(propValue)) {
+      return 'array';
+    }
+    if (propValue instanceof RegExp) {
+      // Old webkits (at least until Android 4.0) return 'function' rather than
+      // 'object' for typeof a RegExp. We'll normalize this here so that /bla/
+      // passes PropTypes.object.
+      return 'object';
+    }
+    if (isSymbol(propType, propValue)) {
+      return 'symbol';
+    }
+    return propType;
+  }
+
+  // This handles more types than `getPropType`. Only used for error messages.
+  // See `createPrimitiveTypeChecker`.
+  function getPreciseType(propValue) {
+    if (typeof propValue === 'undefined' || propValue === null) {
+      return '' + propValue;
+    }
+    var propType = getPropType(propValue);
+    if (propType === 'object') {
+      if (propValue instanceof Date) {
+        return 'date';
+      } else if (propValue instanceof RegExp) {
+        return 'regexp';
+      }
+    }
+    return propType;
+  }
+
+  // Returns a string that is postfixed to a warning about an invalid type.
+  // For example, "undefined" or "of type array"
+  function getPostfixForTypeWarning(value) {
+    var type = getPreciseType(value);
+    switch (type) {
+      case 'array':
+      case 'object':
+        return 'an ' + type;
+      case 'boolean':
+      case 'date':
+      case 'regexp':
+        return 'a ' + type;
+      default:
+        return type;
+    }
+  }
+
+  // Returns class name of the object, if any.
+  function getClassName(propValue) {
+    if (!propValue.constructor || !propValue.constructor.name) {
+      return ANONYMOUS;
+    }
+    return propValue.constructor.name;
+  }
+
+  ReactPropTypes.checkPropTypes = checkPropTypes;
+  ReactPropTypes.PropTypes = ReactPropTypes;
+
+  return ReactPropTypes;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/prop-types/index.js":
+/*!******************************************!*\
+  !*** ./node_modules/prop-types/index.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+if (true) {
+  var REACT_ELEMENT_TYPE = (typeof Symbol === 'function' &&
+    Symbol.for &&
+    Symbol.for('react.element')) ||
+    0xeac7;
+
+  var isValidElement = function(object) {
+    return typeof object === 'object' &&
+      object !== null &&
+      object.$$typeof === REACT_ELEMENT_TYPE;
+  };
+
+  // By explicitly using `prop-types` you are opting into new development behavior.
+  // http://fb.me/prop-types-in-prod
+  var throwOnDirectAccess = true;
+  module.exports = __webpack_require__(/*! ./factoryWithTypeCheckers */ "./node_modules/prop-types/factoryWithTypeCheckers.js")(isValidElement, throwOnDirectAccess);
+} else {}
 
 
 /***/ }),
@@ -18566,6 +19483,658 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./node_modules/react-waypoint/es/index.js":
+/*!*************************************************!*\
+  !*** ./node_modules/react-waypoint/es/index.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function(global) {/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var consolidated_events__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! consolidated-events */ "./node_modules/consolidated-events/lib/index.esm.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+
+/**
+ * Attempts to parse the offset provided as a prop as a percentage. For
+ * instance, if the component has been provided with the string "20%" as
+ * a value of one of the offset props. If the value matches, then it returns
+ * a numeric version of the prop. For instance, "20%" would become `0.2`.
+ * If `str` isn't a percentage, then `undefined` will be returned.
+ *
+ * @param {string} str The value of an offset prop to be converted to a
+ *   number.
+ * @return {number|undefined} The numeric version of `str`. Undefined if `str`
+ *   was not a percentage.
+ */
+function parseOffsetAsPercentage(str) {
+  if (str.slice(-1) === '%') {
+    return parseFloat(str.slice(0, -1)) / 100;
+  }
+}
+
+/**
+ * Attempts to parse the offset provided as a prop as a pixel value. If
+ * parsing fails, then `undefined` is returned. Three examples of values that
+ * will be successfully parsed are:
+ * `20`
+ * "20px"
+ * "20"
+ *
+ * @param {string|number} str A string of the form "{number}" or "{number}px",
+ *   or just a number.
+ * @return {number|undefined} The numeric version of `str`. Undefined if `str`
+ *   was neither a number nor string ending in "px".
+ */
+function parseOffsetAsPixels(str) {
+  if (!isNaN(parseFloat(str)) && isFinite(str)) {
+    return parseFloat(str);
+  } else if (str.slice(-2) === 'px') {
+    return parseFloat(str.slice(0, -2));
+  }
+}
+
+/**
+ * @param {string|number} offset
+ * @param {number} contextHeight
+ * @return {number} A number representing `offset` converted into pixels.
+ */
+function computeOffsetPixels(offset, contextHeight) {
+  var pixelOffset = parseOffsetAsPixels(offset);
+
+  if (typeof pixelOffset === 'number') {
+    return pixelOffset;
+  }
+
+  var percentOffset = parseOffsetAsPercentage(offset);
+  if (typeof percentOffset === 'number') {
+    return percentOffset * contextHeight;
+  }
+}
+
+var constants = {
+  above: 'above',
+  inside: 'inside',
+  below: 'below',
+  invisible: 'invisible'
+};
+
+function debugLog() {
+  if (true) {
+    console.log(arguments); // eslint-disable-line no-console
+  }
+}
+
+var errorMessage = '<Waypoint> expected to receive a single React element child.\n\n' + 'See https://goo.gl/LrBNgw for more info.';
+
+/**
+ * Raise an error if more that one child was provided to "children"
+ *
+ * @param {?React.element} children
+ * @return {undefined}
+ */
+function ensureChildrenIsValid(children) {
+  if (children) {
+    try {
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.Children.only(children);
+    } catch (e) {
+      throw new Error(errorMessage);
+    }
+  }
+}
+
+/**
+ * When an element's type is a string, it represents a DOM node with that tag name
+ * https://facebook.github.io/react/blog/2015/12/18/react-components-elements-and-instances.html#dom-elements
+ *
+ * @param {React.element} Component
+ * @return {bool} Whether the component is a DOM Element
+ */
+function isDOMElement(Component) {
+  return typeof Component.type === 'string';
+}
+
+var errorMessage$1 = '<Waypoint> needs a DOM element to compute boundaries. The child you passed is neither a ' + 'DOM element (e.g. <div>) nor does it use the innerRef prop.\n\n' + 'See https://goo.gl/LrBNgw for more info.';
+
+/**
+ * Raise an error if "children" is not a DOM Element and there is no ref provided to Waypoint
+ *
+ * @param {?React.element} children
+ * @param {?HTMLElement} ref
+ * @return {undefined}
+ */
+function ensureRefIsProvidedByChild(children, ref) {
+  if (children && !isDOMElement(children) && !ref) {
+    throw new Error(errorMessage$1);
+  }
+}
+
+/**
+ * @param {object} bounds An object with bounds data for the waypoint and
+ *   scrollable parent
+ * @return {string} The current position of the waypoint in relation to the
+ *   visible portion of the scrollable parent. One of `constants.above`,
+ *   `constants.below`, or `constants.inside`.
+ */
+function getCurrentPosition(bounds) {
+  if (bounds.viewportBottom - bounds.viewportTop === 0) {
+    return constants.invisible;
+  }
+
+  // top is within the viewport
+  if (bounds.viewportTop <= bounds.waypointTop && bounds.waypointTop <= bounds.viewportBottom) {
+    return constants.inside;
+  }
+
+  // bottom is within the viewport
+  if (bounds.viewportTop <= bounds.waypointBottom && bounds.waypointBottom <= bounds.viewportBottom) {
+    return constants.inside;
+  }
+
+  // top is above the viewport and bottom is below the viewport
+  if (bounds.waypointTop <= bounds.viewportTop && bounds.viewportBottom <= bounds.waypointBottom) {
+    return constants.inside;
+  }
+
+  if (bounds.viewportBottom < bounds.waypointTop) {
+    return constants.below;
+  }
+
+  if (bounds.waypointTop < bounds.viewportTop) {
+    return constants.above;
+  }
+
+  return constants.invisible;
+}
+
+var timeout = void 0;
+var timeoutQueue = [];
+
+function onNextTick(cb) {
+  timeoutQueue.push(cb);
+
+  if (!timeout) {
+    timeout = setTimeout(function () {
+      timeout = null;
+
+      // Drain the timeoutQueue
+      var item = void 0;
+      // eslint-disable-next-line no-cond-assign
+      while (item = timeoutQueue.shift()) {
+        item();
+      }
+    }, 0);
+  }
+
+  var isSubscribed = true;
+
+  return function () {
+    function unsubscribe() {
+      if (!isSubscribed) {
+        return;
+      }
+
+      isSubscribed = false;
+
+      var index = timeoutQueue.indexOf(cb);
+      if (index === -1) {
+        return;
+      }
+
+      timeoutQueue.splice(index, 1);
+
+      if (!timeoutQueue.length && timeout) {
+        clearTimeout(timeout);
+        timeout = null;
+      }
+    }
+
+    return unsubscribe;
+  }();
+}
+
+function resolveScrollableAncestorProp(scrollableAncestor) {
+  // When Waypoint is rendered on the server, `window` is not available.
+  // To make Waypoint easier to work with, we allow this to be specified in
+  // string form and safely convert to `window` here.
+  if (scrollableAncestor === 'window') {
+    return global.window;
+  }
+
+  return scrollableAncestor;
+}
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var defaultProps = {
+  topOffset: '0px',
+  bottomOffset: '0px',
+  horizontal: false,
+  onEnter: function () {
+    function onEnter() {}
+
+    return onEnter;
+  }(),
+  onLeave: function () {
+    function onLeave() {}
+
+    return onLeave;
+  }(),
+  onPositionChange: function () {
+    function onPositionChange() {}
+
+    return onPositionChange;
+  }(),
+
+  fireOnRapidScroll: true
+};
+
+// React.PureComponent was added in React 15.3.0
+var BaseClass = typeof react__WEBPACK_IMPORTED_MODULE_0___default.a.PureComponent !== 'undefined' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.PureComponent : react__WEBPACK_IMPORTED_MODULE_0___default.a.Component;
+
+// Calls a function when you scroll to the element.
+
+var Waypoint = function (_BaseClass) {
+  _inherits(Waypoint, _BaseClass);
+
+  function Waypoint(props) {
+    _classCallCheck(this, Waypoint);
+
+    var _this = _possibleConstructorReturn(this, (Waypoint.__proto__ || Object.getPrototypeOf(Waypoint)).call(this, props));
+
+    _this.refElement = function (e) {
+      return _this._ref = e;
+    };
+    return _this;
+  }
+
+  _createClass(Waypoint, [{
+    key: 'componentWillMount',
+    value: function () {
+      function componentWillMount() {
+        ensureChildrenIsValid(this.props.children);
+      }
+
+      return componentWillMount;
+    }()
+  }, {
+    key: 'componentDidMount',
+    value: function () {
+      function componentDidMount() {
+        var _this2 = this;
+
+        if (!Waypoint.getWindow()) {
+          return;
+        }
+
+        // this._ref may occasionally not be set at this time. To help ensure that
+        // this works smoothly and to avoid layout thrashing, we want to delay the
+        // initial execution until the next tick.
+        this.cancelOnNextTick = onNextTick(function () {
+          _this2.cancelOnNextTick = null;
+
+          // Berofe doing anything, we want to check that this._ref is avaliable in Waypoint
+          ensureRefIsProvidedByChild(_this2.props.children, _this2._ref);
+
+          _this2._handleScroll = _this2._handleScroll.bind(_this2);
+          _this2.scrollableAncestor = _this2._findScrollableAncestor();
+
+          if ("development" !== 'production' && _this2.props.debug) {
+            debugLog('scrollableAncestor', _this2.scrollableAncestor);
+          }
+
+          _this2.scrollEventListenerUnsubscribe = Object(consolidated_events__WEBPACK_IMPORTED_MODULE_1__["addEventListener"])(_this2.scrollableAncestor, 'scroll', _this2._handleScroll, { passive: true });
+
+          _this2.resizeEventListenerUnsubscribe = Object(consolidated_events__WEBPACK_IMPORTED_MODULE_1__["addEventListener"])(window, 'resize', _this2._handleScroll, { passive: true });
+
+          _this2._handleScroll(null);
+        });
+      }
+
+      return componentDidMount;
+    }()
+  }, {
+    key: 'componentWillReceiveProps',
+    value: function () {
+      function componentWillReceiveProps(newProps) {
+        ensureChildrenIsValid(newProps.children);
+      }
+
+      return componentWillReceiveProps;
+    }()
+  }, {
+    key: 'componentDidUpdate',
+    value: function () {
+      function componentDidUpdate() {
+        var _this3 = this;
+
+        if (!Waypoint.getWindow()) {
+          return;
+        }
+
+        if (!this.scrollableAncestor) {
+          // The Waypoint has not yet initialized.
+          return;
+        }
+
+        // The element may have moved, so we need to recompute its position on the
+        // page. This happens via handleScroll in a way that forces layout to be
+        // computed.
+        //
+        // We want this to be deferred to avoid forcing layout during render, which
+        // causes layout thrashing. And, if we already have this work enqueued, we
+        // can just wait for that to happen instead of enqueueing again.
+        if (this.cancelOnNextTick) {
+          return;
+        }
+
+        this.cancelOnNextTick = onNextTick(function () {
+          _this3.cancelOnNextTick = null;
+          _this3._handleScroll(null);
+        });
+      }
+
+      return componentDidUpdate;
+    }()
+  }, {
+    key: 'componentWillUnmount',
+    value: function () {
+      function componentWillUnmount() {
+        if (!Waypoint.getWindow()) {
+          return;
+        }
+
+        if (this.scrollEventListenerUnsubscribe) {
+          this.scrollEventListenerUnsubscribe();
+        }
+        if (this.resizeEventListenerUnsubscribe) {
+          this.resizeEventListenerUnsubscribe();
+        }
+
+        if (this.cancelOnNextTick) {
+          this.cancelOnNextTick();
+        }
+      }
+
+      return componentWillUnmount;
+    }()
+
+    /**
+     * Traverses up the DOM to find an ancestor container which has an overflow
+     * style that allows for scrolling.
+     *
+     * @return {Object} the closest ancestor element with an overflow style that
+     *   allows for scrolling. If none is found, the `window` object is returned
+     *   as a fallback.
+     */
+
+  }, {
+    key: '_findScrollableAncestor',
+    value: function () {
+      function _findScrollableAncestor() {
+        var _props = this.props,
+            horizontal = _props.horizontal,
+            scrollableAncestor = _props.scrollableAncestor;
+
+
+        if (scrollableAncestor) {
+          return resolveScrollableAncestorProp(scrollableAncestor);
+        }
+
+        var node = this._ref;
+
+        while (node.parentNode) {
+          node = node.parentNode;
+
+          if (node === document.body) {
+            // We've reached all the way to the root node.
+            return window;
+          }
+
+          var style = window.getComputedStyle(node);
+          var overflowDirec = horizontal ? style.getPropertyValue('overflow-x') : style.getPropertyValue('overflow-y');
+          var overflow = overflowDirec || style.getPropertyValue('overflow');
+
+          if (overflow === 'auto' || overflow === 'scroll') {
+            return node;
+          }
+        }
+
+        // A scrollable ancestor element was not found, which means that we need to
+        // do stuff on window.
+        return window;
+      }
+
+      return _findScrollableAncestor;
+    }()
+
+    /**
+     * @param {Object} event the native scroll event coming from the scrollable
+     *   ancestor, or resize event coming from the window. Will be undefined if
+     *   called by a React lifecyle method
+     */
+
+  }, {
+    key: '_handleScroll',
+    value: function () {
+      function _handleScroll(event) {
+        if (!this._ref) {
+          // There's a chance we end up here after the component has been unmounted.
+          return;
+        }
+
+        var bounds = this._getBounds();
+        var currentPosition = getCurrentPosition(bounds);
+        var previousPosition = this._previousPosition;
+
+        if ("development" !== 'production' && this.props.debug) {
+          debugLog('currentPosition', currentPosition);
+          debugLog('previousPosition', previousPosition);
+        }
+
+        // Save previous position as early as possible to prevent cycles
+        this._previousPosition = currentPosition;
+
+        if (previousPosition === currentPosition) {
+          // No change since last trigger
+          return;
+        }
+
+        var callbackArg = {
+          currentPosition: currentPosition,
+          previousPosition: previousPosition,
+          event: event,
+          waypointTop: bounds.waypointTop,
+          waypointBottom: bounds.waypointBottom,
+          viewportTop: bounds.viewportTop,
+          viewportBottom: bounds.viewportBottom
+        };
+        this.props.onPositionChange.call(this, callbackArg);
+
+        if (currentPosition === constants.inside) {
+          this.props.onEnter.call(this, callbackArg);
+        } else if (previousPosition === constants.inside) {
+          this.props.onLeave.call(this, callbackArg);
+        }
+
+        var isRapidScrollDown = previousPosition === constants.below && currentPosition === constants.above;
+        var isRapidScrollUp = previousPosition === constants.above && currentPosition === constants.below;
+
+        if (this.props.fireOnRapidScroll && (isRapidScrollDown || isRapidScrollUp)) {
+          // If the scroll event isn't fired often enough to occur while the
+          // waypoint was visible, we trigger both callbacks anyway.
+          this.props.onEnter.call(this, {
+            currentPosition: constants.inside,
+            previousPosition: previousPosition,
+            event: event,
+            waypointTop: bounds.waypointTop,
+            waypointBottom: bounds.waypointBottom,
+            viewportTop: bounds.viewportTop,
+            viewportBottom: bounds.viewportBottom
+          });
+          this.props.onLeave.call(this, {
+            currentPosition: currentPosition,
+            previousPosition: constants.inside,
+            event: event,
+            waypointTop: bounds.waypointTop,
+            waypointBottom: bounds.waypointBottom,
+            viewportTop: bounds.viewportTop,
+            viewportBottom: bounds.viewportBottom
+          });
+        }
+      }
+
+      return _handleScroll;
+    }()
+  }, {
+    key: '_getBounds',
+    value: function () {
+      function _getBounds() {
+        var horizontal = this.props.horizontal;
+
+        var _ref$getBoundingClien = this._ref.getBoundingClientRect(),
+            left = _ref$getBoundingClien.left,
+            top = _ref$getBoundingClien.top,
+            right = _ref$getBoundingClien.right,
+            bottom = _ref$getBoundingClien.bottom;
+
+        var waypointTop = horizontal ? left : top;
+        var waypointBottom = horizontal ? right : bottom;
+
+        var contextHeight = void 0;
+        var contextScrollTop = void 0;
+        if (this.scrollableAncestor === window) {
+          contextHeight = horizontal ? window.innerWidth : window.innerHeight;
+          contextScrollTop = 0;
+        } else {
+          contextHeight = horizontal ? this.scrollableAncestor.offsetWidth : this.scrollableAncestor.offsetHeight;
+          contextScrollTop = horizontal ? this.scrollableAncestor.getBoundingClientRect().left : this.scrollableAncestor.getBoundingClientRect().top;
+        }
+
+        if ("development" !== 'production' && this.props.debug) {
+          debugLog('waypoint top', waypointTop);
+          debugLog('waypoint bottom', waypointBottom);
+          debugLog('scrollableAncestor height', contextHeight);
+          debugLog('scrollableAncestor scrollTop', contextScrollTop);
+        }
+
+        var _props2 = this.props,
+            bottomOffset = _props2.bottomOffset,
+            topOffset = _props2.topOffset;
+
+        var topOffsetPx = computeOffsetPixels(topOffset, contextHeight);
+        var bottomOffsetPx = computeOffsetPixels(bottomOffset, contextHeight);
+        var contextBottom = contextScrollTop + contextHeight;
+
+        return {
+          waypointTop: waypointTop,
+          waypointBottom: waypointBottom,
+          viewportTop: contextScrollTop + topOffsetPx,
+          viewportBottom: contextBottom - bottomOffsetPx
+        };
+      }
+
+      return _getBounds;
+    }()
+
+    /**
+     * @return {Object}
+     */
+
+  }, {
+    key: 'render',
+    value: function () {
+      function render() {
+        var _this4 = this;
+
+        var children = this.props.children;
+
+
+        if (!children) {
+          // We need an element that we can locate in the DOM to determine where it is
+          // rendered relative to the top of its context.
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement('span', { ref: this.refElement, style: { fontSize: 0 } });
+        }
+
+        if (isDOMElement(children)) {
+          var ref = function () {
+            function ref(node) {
+              _this4.refElement(node);
+              if (children.ref) {
+                children.ref(node);
+              }
+            }
+
+            return ref;
+          }();
+
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.cloneElement(children, { ref: ref });
+        }
+
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.cloneElement(children, { innerRef: this.refElement });
+      }
+
+      return render;
+    }()
+  }]);
+
+  return Waypoint;
+}(BaseClass);
+
+
+Waypoint.propTypes = {
+  children: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.node,
+  debug: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.bool,
+  onEnter: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.func,
+  onLeave: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.func,
+  onPositionChange: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.func,
+  fireOnRapidScroll: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.bool,
+  scrollableAncestor: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.any,
+  horizontal: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.bool,
+
+  // `topOffset` can either be a number, in which case its a distance from the
+  // top of the container in pixels, or a string value. Valid string values are
+  // of the form "20px", which is parsed as pixels, or "20%", which is parsed
+  // as a percentage of the height of the containing element.
+  // For instance, if you pass "-20%", and the containing element is 100px tall,
+  // then the waypoint will be triggered when it has been scrolled 20px beyond
+  // the top of the containing element.
+  topOffset: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string, prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.number]),
+
+  // `bottomOffset` is like `topOffset`, but for the bottom of the container.
+  bottomOffset: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string, prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.number])
+};
+
+Waypoint.above = constants.above;
+Waypoint.below = constants.below;
+Waypoint.inside = constants.inside;
+Waypoint.invisible = constants.invisible;
+Waypoint.getWindow = function () {
+  if (typeof window !== 'undefined') {
+    return window;
+  }
+};
+Waypoint.defaultProps = defaultProps;
+Waypoint.displayName = 'Waypoint';
+
+/* harmony default export */ __webpack_exports__["default"] = (Waypoint);
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+
+/***/ }),
+
 /***/ "./node_modules/react/cjs/react.development.js":
 /*!*****************************************************!*\
   !*** ./node_modules/react/cjs/react.development.js ***!
@@ -20077,6 +21646,37 @@ module.exports = react;
 if (false) {} else {
   module.exports = __webpack_require__(/*! ./cjs/react.development.js */ "./node_modules/react/cjs/react.development.js");
 }
+
+
+/***/ }),
+
+/***/ "./node_modules/webpack/buildin/global.js":
+/*!***********************************!*\
+  !*** (webpack)/buildin/global.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1, eval)("this");
+} catch (e) {
+	// This works if the window reference is available
+	if (typeof window === "object") g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
 
 
 /***/ })

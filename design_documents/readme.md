@@ -23,4 +23,4 @@ __Timeline__
   * Research Waypoint and infinite scroll implementation
   * Complete wireframes and complete design
   * Sedo code for Mondrian painting
-2. See MVPs (timeline provided)
+2. See MVPs (timeline provided )
