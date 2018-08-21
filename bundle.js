@@ -128,37 +128,50 @@ var Art = function (_React$Component) {
   function Art() {
     _classCallCheck(this, Art);
 
-    return _possibleConstructorReturn(this, (Art.__proto__ || Object.getPrototypeOf(Art)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (Art.__proto__ || Object.getPrototypeOf(Art)).call(this));
+
+    var currentItems = [];
+    currentItems.push(_react2.default.createElement(_painting2.default, null));
+    currentItems.push(_react2.default.createElement(_painting2.default, null));
+    currentItems.push(_react2.default.createElement(_painting2.default, null));
+
+    _this.state = { items: currentItems, isLoading: false };
+    return _this;
   }
 
   _createClass(Art, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {}
+    key: 'loadMoreItems',
+    value: function loadMoreItems() {
+      var currentItems = this.state.items;
+      currentItems.push(_react2.default.createElement(_painting2.default, null));
+      currentItems.push(_react2.default.createElement(_painting2.default, null));
+      this.setState({
+        items: currentItems
+      });
+    }
   }, {
-    key: 'getPaintings',
-    value: function getPaintings() {}
-  }, {
-    key: 'shedPaintings',
-    value: function shedPaintings() {}
+    key: 'renderItems',
+    value: function renderItems() {
+      return this.state.items.map(function (item, index) {
+        return _react2.default.createElement(
+          'div',
+          { key: index },
+          item
+        );
+      });
+    }
   }, {
     key: 'render',
     value: function render() {
+      var _this2 = this;
+
       return _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement(_painting2.default, null),
-        _react2.default.createElement(_painting2.default, null),
-        _react2.default.createElement(_painting2.default, null),
+        this.renderItems(),
         _react2.default.createElement(_reactWaypoint2.default, { onEnter: function onEnter() {
-            console.log("entered");
-          },
-          onleave: function onleave() {
-            console.log("exit");
-          } }),
-        _react2.default.createElement(_painting2.default, null),
-        _react2.default.createElement(_painting2.default, null),
-        _react2.default.createElement(_painting2.default, null),
-        _react2.default.createElement(_painting2.default, null)
+            _this2.loadMoreItems();
+          }, threshold: 2.0 })
       );
     }
   }]);
@@ -198,6 +211,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+//look up canvas. It will be much better for drawing.
 var Painting = function (_React$Component) {
   _inherits(Painting, _React$Component);
 
@@ -218,10 +232,12 @@ var Painting = function (_React$Component) {
   }, {
     key: 'createPainting',
     value: function createPainting() {
+      var number = Math.floor(Math.random() * 10000);
       return _react2.default.createElement(
         'div',
         { style: this.doStyling() },
-        'This will be the painting'
+        'This will be the painting - ',
+        number
       );
     }
   }, {

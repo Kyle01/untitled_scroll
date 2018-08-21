@@ -5,33 +5,44 @@ import Painting from './painting';
 
 class Art extends React.Component{
 
-  componentDidMount(){
+  constructor() {
+    super();
 
+    let currentItems = [];
+    currentItems.push(<Painting />);
+    currentItems.push(<Painting />);
+    currentItems.push(<Painting />);
+
+    this.state = {items: currentItems, isLoading: false};
   }
 
-  getPaintings(){
-
+  loadMoreItems(){
+    let currentItems = this.state.items;
+    currentItems.push(<Painting />);
+    currentItems.push(<Painting />);
+    this.setState({
+      items: currentItems,
+    });
   }
 
-  shedPaintings(){
-
+  renderItems(){
+    return this.state.items.map(function(item, index) {
+      return (
+        <div key={index}>{item}</div>
+      );
+    });
   }
-  
+
   render () {
     return (
       <div>
-        <Painting />
-        <Painting />
-        <Painting />
-        <Waypoint onEnter={() => {console.log("entered")}}
-                  onleave={() => {console.log("exit")}}/>
-        <Painting / >
-        <Painting / >
-        <Painting / >
-        <Painting / >
+        { this.renderItems() }
+        <Waypoint onEnter={() => {this.loadMoreItems()}} threshold={2.0} />
       </div>
     );
+
   }
+
 }
 
 export default Art;

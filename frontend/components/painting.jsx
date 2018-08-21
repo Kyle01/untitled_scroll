@@ -1,5 +1,5 @@
 import React from 'react';
-
+//look up canvas. It will be much better for drawing.
 class Painting extends React.Component{
 
   doStyling(){
@@ -10,9 +10,10 @@ class Painting extends React.Component{
   }
 
   createPainting(){
+    let number = Math.floor((Math.random() * 10000));
     return (
       <div style={this.doStyling()}>
-        This will be the painting
+        This will be the painting - {number}
       </div>
     );
   }
