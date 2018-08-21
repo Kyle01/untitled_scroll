@@ -2,6 +2,7 @@ import React from 'react';
 import Waypoint from 'react-waypoint';
 
 import Painting from './painting';
+import Mondrian from './mondrian';
 
 class Art extends React.Component{
 
@@ -9,11 +10,11 @@ class Art extends React.Component{
     super();
 
     let currentItems = [];
-    currentItems.push(<Painting />);
+    currentItems.push(<Mondrian />);
     currentItems.push(<Painting />);
     currentItems.push(<Painting />);
 
-    this.state = {items: currentItems, isLoading: false};
+    this.state = {items: currentItems};
   }
 
   loadMoreItems(){

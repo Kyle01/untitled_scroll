@@ -114,6 +114,10 @@ var _painting = __webpack_require__(/*! ./painting */ "./frontend/components/pai
 
 var _painting2 = _interopRequireDefault(_painting);
 
+var _mondrian = __webpack_require__(/*! ./mondrian */ "./frontend/components/mondrian.jsx");
+
+var _mondrian2 = _interopRequireDefault(_mondrian);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -131,11 +135,11 @@ var Art = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (Art.__proto__ || Object.getPrototypeOf(Art)).call(this));
 
     var currentItems = [];
-    currentItems.push(_react2.default.createElement(_painting2.default, null));
+    currentItems.push(_react2.default.createElement(_mondrian2.default, null));
     currentItems.push(_react2.default.createElement(_painting2.default, null));
     currentItems.push(_react2.default.createElement(_painting2.default, null));
 
-    _this.state = { items: currentItems, isLoading: false };
+    _this.state = { items: currentItems };
     return _this;
   }
 
@@ -180,6 +184,71 @@ var Art = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = Art;
+
+/***/ }),
+
+/***/ "./frontend/components/mondrian.jsx":
+/*!******************************************!*\
+  !*** ./frontend/components/mondrian.jsx ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+//look up canvas. It will be much better for drawing.
+var Mondrian = function (_React$Component) {
+  _inherits(Mondrian, _React$Component);
+
+  function Mondrian() {
+    _classCallCheck(this, Mondrian);
+
+    return _possibleConstructorReturn(this, (Mondrian.__proto__ || Object.getPrototypeOf(Mondrian)).apply(this, arguments));
+  }
+
+  _createClass(Mondrian, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.updateCanvas();
+    }
+  }, {
+    key: 'updateCanvas',
+    value: function updateCanvas() {
+      var ctx = this.refs.canvas.getContext('2d');
+      ctx.fillRect(0, 0, 100, 100);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement('canvas', { ref: 'canvas', width: window.innerWidth, heigth: window.innerHeight });
+    }
+  }]);
+
+  return Mondrian;
+}(_react2.default.Component);
+
+exports.default = Mondrian;
+
+//window.innerHeight or window.innerWidth
 
 /***/ }),
 
