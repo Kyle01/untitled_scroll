@@ -2,7 +2,7 @@ import React from 'react';
 
 class Mondrian extends React.Component{
 
-   constructor(props){
+  constructor(props){
      super(props);
 
      this.xCoordinates = [0];
@@ -28,7 +28,7 @@ class Mondrian extends React.Component{
     let temp = 0;
     let height = window.innerHeight;
     let width = window.innerWidth;
-    let probability = [1,1,1,1,1,1,2,2,2,3];
+    let probability = [1,1,1,2,2,2,2,2,3,3];
     let idx = Math.floor(Math.random() * probability.length);
     let num = probability[idx];
     let xStart = 0;

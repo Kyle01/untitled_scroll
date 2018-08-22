@@ -3,6 +3,7 @@ import Waypoint from 'react-waypoint';
 
 import Painting from './painting';
 import Mondrian from './mondrian';
+import Cog from './cog';
 
 class Art extends React.Component{
 
@@ -37,6 +38,7 @@ class Art extends React.Component{
   render () {
     return (
       <div>
+        <Cog />
         { this.renderItems() }
         <Waypoint onEnter={() => {this.loadMoreItems()}} threshold={2.0} />
       </div>

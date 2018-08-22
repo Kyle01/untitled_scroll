@@ -4,3 +4,8 @@ Questions
 * Whcih would be best? Just divs, SVG or canvas?
   * id like to not do divs so I can learn something else
   * Does Canvas or SVG manipulate the dom? Is that gonna crash react?
+
+
+
+*position absolute
+*transparent background 
