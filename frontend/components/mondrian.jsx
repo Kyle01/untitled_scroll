@@ -125,6 +125,7 @@ class Mondrian extends React.Component{
     ctx.fillStyle = '#0000ff';
 
     for(let k = 0; k < this.squares.length; k++){
+      ctx.fillStyle = this.pickColor();
       ctx.fillRect(
         this.squares[k][0],
         this.squares[k][1],
@@ -132,6 +133,23 @@ class Mondrian extends React.Component{
         this.squares[k][3]
       );
     }
+  }
+
+  pickColor(){
+    let probability = [
+      '#ffffff',
+      '#ffffff',
+      '#ffffff',
+      '#ffffff',
+      '#ffffff',
+      '#ffffff',
+      '#ffffff',
+      '#0000ff',
+      '#ffff00',
+      '#ff0000'
+    ];
+    let idx = Math.floor(Math.random() * probability.length);
+    return probability[idx];
   }
 
   render() {

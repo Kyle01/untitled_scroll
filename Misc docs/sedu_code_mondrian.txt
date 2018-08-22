@@ -12,8 +12,8 @@ Sedo code for painting Mondrians
 5) Each of the squares made from the black lines will be divs
 6) Enter each div, paint it according to these rules:
   a) if there is a color square adjacent to the current square, that color is ineligible
-  b) there is a 50% chance the square will remain white
-  c) there is a 50% chance it will be painted an eligible color (equal weight)
+  b) there is a 70% chance the square will remain white
+  c) there is a 30% chance it will be painted an eligible color (equal weight)
 7) Once all square have been completed, return the object
 8) repeat for next painting (with the same height and window wait)
 9) if the user scrolls and there is no backup, create a backup. Repeat infinitely

@@ -355,8 +355,16 @@ var Mondrian = function (_React$Component) {
       ctx.fillStyle = '#0000ff';
 
       for (var k = 0; k < this.squares.length; k++) {
+        ctx.fillStyle = this.pickColor();
         ctx.fillRect(this.squares[k][0], this.squares[k][1], this.squares[k][2], this.squares[k][3]);
       }
+    }
+  }, {
+    key: 'pickColor',
+    value: function pickColor() {
+      var probability = ['#ffffff', '#ffffff', '#ffffff', '#ffffff', '#ffffff', '#ffffff', '#ffffff', '#0000ff', '#ffff00', '#ff0000'];
+      var idx = Math.floor(Math.random() * probability.length);
+      return probability[idx];
     }
   }, {
     key: 'render',
