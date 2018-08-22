@@ -229,21 +229,58 @@ var Mondrian = function (_React$Component) {
     value: function componentDidMount() {
       this.updateCanvas();
     }
+
+    //This is my example canvas. Likely to never be used..
+
   }, {
     key: 'updateCanvas',
     value: function updateCanvas() {
+      this.drawVerticalLines();
+      // let height = window.innerHeight;
+      // let width = window.innerWidth;
+      // const ctx = this.refs.canvas.getContext('2d');
+      // ctx.fillStyle = '#0000ff';
+      // ctx.fillRect(0,0, width/2-10, height/2-10);
+      // ctx.fillStyle = '#000000';
+      // ctx.fillRect(width/2-10, 0, 10, height);
+      // ctx.fillRect(0, height/2-10, width, 10);
+      // ctx.fillRect(0, height*.8-10,width, 10);
+      // ctx.fillStyle = '#ff0000';
+      // ctx.fillRect(width/2, height*.8, width/2, height-height*.8);
+    }
+
+    //
+
+  }, {
+    key: 'drawVerticalLines',
+    value: function drawVerticalLines() {
+      var ctx = this.refs.canvas.getContext('2d');
       var height = window.innerHeight;
       var width = window.innerWidth;
-      var ctx = this.refs.canvas.getContext('2d');
-      ctx.fillStyle = '#0000ff';
-      ctx.fillRect(0, 0, width / 2 - 10, height / 2 - 10);
+      var probability = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+      var idx = Math.floor(Math.random() * probability.length);
+      var num = probability[idx];
+      var xStart = 0;
       ctx.fillStyle = '#000000';
-      ctx.fillRect(width / 2 - 10, 0, 10, height);
-      ctx.fillRect(0, height / 2 - 10, width, 10);
-      ctx.fillRect(0, height * .8 - 10, width, 10);
-      ctx.fillStyle = '#ff0000';
-      ctx.fillRect(width / 2, height * .8, width / 2, height - height * .8);
+      switch (num) {
+        case 1:
+          xStart = Math.floor(Math.random() * window.innerWidth - 10);
+          ctx.fillRect(xStart, 0, 10, height);
+          break;
+        case 2:
+          var half = width / 2 - 10;
+          for (var k = 0; k < 2; k++) {
+            xStart = Math.floor(Math.random() * half);
+            ctx.fillRect(k * half + xStart, 0, 10, height);
+          }
+          break;
+        case 3:
+
+      }
     }
+  }, {
+    key: 'drawHorizontalLines',
+    value: function drawHorizontalLines() {}
   }, {
     key: 'render',
     value: function render() {
