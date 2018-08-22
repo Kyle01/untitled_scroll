@@ -1,0 +1,10 @@
+.cog-main {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+}
+
+.cog-image {
+  height: 35px;
+  width: 35px;
+}

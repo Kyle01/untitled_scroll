@@ -239,8 +239,8 @@ var Cog = function (_React$Component) {
 
       return _react2.default.createElement(
         'div',
-        { style: styles },
-        _react2.default.createElement('img', { style: { width: '40px', height: '40px' }, src: '/Users/kylemcveigh/Documents/Coding_exercises/App_academy/js_project/assets/images/wheel.png' })
+        { style: styles, className: 'cog-main' },
+        _react2.default.createElement('img', { className: 'cog-image', src: '/Users/kylemcveigh/Documents/Coding_exercises/App_academy/js_project/assets/images/wheel.png' })
       );
     }
   }]);

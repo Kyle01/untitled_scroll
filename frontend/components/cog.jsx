@@ -8,8 +8,8 @@ class Cog extends React.Component{
     };
 
     return (
-      <div style={styles}>
-        <img  style={{width: '40px', height: '40px'}} src={'/Users/kylemcveigh/Documents/Coding_exercises/App_academy/js_project/assets/images/wheel.png'}/>
+      <div style={styles} className='cog-main'>
+        <img  className='cog-image' src={'/Users/kylemcveigh/Documents/Coding_exercises/App_academy/js_project/assets/images/wheel.png'}/>
       </div>
     );
   }
