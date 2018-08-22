@@ -7,7 +7,7 @@ Sedo code for painting Mondrians
     on a random generation, 60% of 1, 30% of 2, 10% of 3,
     These will be vertical lines
 4) Pick a number between 1 and 5
-  on a random generation, 30% of 1, 40% of 2, 20% of 3, 10% of 4
+  on a random generation, 20% of 1, 30% of 2, 30% of 3, 20% of 4
   This will be vertical lines
 5) Each of the squares made from the black lines will be divs
 6) Enter each div, paint it according to these rules:

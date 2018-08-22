@@ -218,10 +218,15 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Mondrian = function (_React$Component) {
   _inherits(Mondrian, _React$Component);
 
-  function Mondrian() {
+  function Mondrian(props) {
     _classCallCheck(this, Mondrian);
 
-    return _possibleConstructorReturn(this, (Mondrian.__proto__ || Object.getPrototypeOf(Mondrian)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (Mondrian.__proto__ || Object.getPrototypeOf(Mondrian)).call(this, props));
+
+    _this.xCoordinates = [0];
+    _this.yCoordinates = [0];
+    _this.squares = [];
+    return _this;
   }
 
   _createClass(Mondrian, [{
@@ -237,17 +242,8 @@ var Mondrian = function (_React$Component) {
     value: function updateCanvas() {
       this.drawVerticalLines();
       this.drawHorizontalLines();
-      // let height = window.innerHeight;
-      // let width = window.innerWidth;
-      // const ctx = this.refs.canvas.getContext('2d');
-      // ctx.fillStyle = '#0000ff';
-      // ctx.fillRect(0,0, width/2-10, height/2-10);
-      // ctx.fillStyle = '#000000';
-      // ctx.fillRect(width/2-10, 0, 10, height);
-      // ctx.fillRect(0, height/2-10, width, 10);
-      // ctx.fillRect(0, height*.8-10,width, 10);
-      // ctx.fillStyle = '#ff0000';
-      // ctx.fillRect(width/2, height*.8, width/2, height-height*.8);
+      this.determineSquares();
+      this.paintSquares();
     }
 
     //
@@ -256,6 +252,7 @@ var Mondrian = function (_React$Component) {
     key: 'drawVerticalLines',
     value: function drawVerticalLines() {
       var ctx = this.refs.canvas.getContext('2d');
+      var temp = 0;
       var height = window.innerHeight;
       var width = window.innerWidth;
       var probability = [1, 1, 1, 1, 1, 1, 2, 2, 2, 3];
@@ -267,19 +264,24 @@ var Mondrian = function (_React$Component) {
         case 1:
           xStart = Math.floor(Math.random() * window.innerWidth - 10);
           ctx.fillRect(xStart, 0, 10, height);
+          this.xCoordinates.push(xStart + 10);
           break;
         case 2:
           var half = width / 2 - 10;
           for (var k = 0; k < 2; k++) {
             xStart = Math.floor(Math.random() * half);
-            ctx.fillRect(k * half + xStart, 0, 10, height);
+            temp = k * half + xStart;
+            ctx.fillRect(temp, 0, 10, height);
+            this.xCoordinates.push(temp + 10);
           }
           break;
         case 3:
           var part = width / 3 - 10;
           for (var _k = 0; _k < 3; _k++) {
             xStart = Math.floor(Math.random() * part);
-            ctx.fillRect(_k * part + xStart, 0, 10, height);
+            temp = _k * part + xStart;
+            ctx.fillRect(temp, 0, 10, height);
+            this.xCoordinates.push(temp + 10);
           }
           break;
       }
@@ -290,6 +292,7 @@ var Mondrian = function (_React$Component) {
       var ctx = this.refs.canvas.getContext('2d');
       var height = window.innerHeight;
       var width = window.innerWidth;
+      var temp = 0;
       var probability = [1, 1, 2, 2, 2, 3, 3, 3, 4, 4];
       var idx = Math.floor(Math.random() * probability.length);
       var num = probability[idx];
@@ -299,28 +302,60 @@ var Mondrian = function (_React$Component) {
         case 1:
           yStart = Math.floor(Math.random() * height - 10);
           ctx.fillRect(0, yStart, width, 10);
+          this.yCoordinates.push(yStart + 10);
           break;
         case 2:
           var half = height / 2 - 10;
           for (var k = 0; k < 2; k++) {
             yStart = Math.floor(Math.random() * half);
-            ctx.fillRect(0, k * half + yStart, width, 10);
+            temp = k * half + yStart;
+            ctx.fillRect(0, temp, width, 10);
+            this.yCoordinates.push(temp + 10);
           }
           break;
         case 3:
           var part = height / 3 - 10;
           for (var _k2 = 0; _k2 < 3; _k2++) {
             yStart = Math.floor(Math.random() * part);
-            ctx.fillRect(0, _k2 * part + yStart, width, 10);
+            temp = _k2 * part + yStart;
+            ctx.fillRect(0, temp, width, 10);
+            this.yCoordinates.push(temp + 10);
           }
           break;
         case 4:
           part = height / 4 - 10;
           for (var _k3 = 0; _k3 < 3; _k3++) {
             yStart = Math.floor(Math.random() * part);
-            ctx.fillRect(0, _k3 * part + yStart, width, 10);
+            temp = _k3 * part + yStart;
+            ctx.fillRect(0, temp, width, 10);
+            this.yCoordinates.push(temp + 10);
           }
           break;
+      }
+    }
+  }, {
+    key: 'determineSquares',
+    value: function determineSquares() {
+      var helper = [0, 0, 0, 0];
+      for (var j = 0; j < this.xCoordinates.length; j++) {
+        for (var k = 0; k < this.yCoordinates.length; k++) {
+          helper[0] = this.xCoordinates[j];
+          helper[1] = this.yCoordinates[k];
+          j === this.xCoordinates.length - 1 ? helper[2] = window.innerWidth - this.xCoordinates[j] : helper[2] = this.xCoordinates[j + 1] - this.xCoordinates[j] - 10;
+          k === this.yCoordinates.length - 1 ? helper[3] = window.innerHeight - this.yCoordinates[k] : helper[3] = this.yCoordinates[k + 1] - this.yCoordinates[k] - 10;
+          this.squares.push(helper);
+          helper = [0, 0, 0, 0];
+        }
+      }
+    }
+  }, {
+    key: 'paintSquares',
+    value: function paintSquares() {
+      var ctx = this.refs.canvas.getContext('2d');
+      ctx.fillStyle = '#0000ff';
+
+      for (var k = 0; k < this.squares.length; k++) {
+        ctx.fillRect(this.squares[k][0], this.squares[k][1], this.squares[k][2], this.squares[k][3]);
       }
     }
   }, {
