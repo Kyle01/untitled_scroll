@@ -136,8 +136,8 @@ var Art = function (_React$Component) {
 
     var currentItems = [];
     currentItems.push(_react2.default.createElement(_mondrian2.default, null));
-    currentItems.push(_react2.default.createElement(_painting2.default, null));
-    currentItems.push(_react2.default.createElement(_painting2.default, null));
+    currentItems.push(_react2.default.createElement(_mondrian2.default, null));
+    currentItems.push(_react2.default.createElement(_mondrian2.default, null));
 
     _this.state = { items: currentItems };
     return _this;
@@ -147,8 +147,8 @@ var Art = function (_React$Component) {
     key: 'loadMoreItems',
     value: function loadMoreItems() {
       var currentItems = this.state.items;
-      currentItems.push(_react2.default.createElement(_painting2.default, null));
-      currentItems.push(_react2.default.createElement(_painting2.default, null));
+      currentItems.push(_react2.default.createElement(_mondrian2.default, null));
+      currentItems.push(_react2.default.createElement(_mondrian2.default, null));
       this.setState({
         items: currentItems
       });
@@ -215,7 +215,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-//look up canvas. It will be much better for drawing.
 var Mondrian = function (_React$Component) {
   _inherits(Mondrian, _React$Component);
 
@@ -233,13 +232,22 @@ var Mondrian = function (_React$Component) {
   }, {
     key: 'updateCanvas',
     value: function updateCanvas() {
+      var height = window.innerHeight;
+      var width = window.innerWidth;
       var ctx = this.refs.canvas.getContext('2d');
-      ctx.fillRect(0, 0, 100, 100);
+      ctx.fillStyle = '#0000ff';
+      ctx.fillRect(0, 0, width / 2 - 10, height / 2 - 10);
+      ctx.fillStyle = '#000000';
+      ctx.fillRect(width / 2 - 10, 0, 10, height);
+      ctx.fillRect(0, height / 2 - 10, width, 10);
+      ctx.fillRect(0, height * .8 - 10, width, 10);
+      ctx.fillStyle = '#ff0000';
+      ctx.fillRect(width / 2, height * .8, width / 2, height - height * .8);
     }
   }, {
     key: 'render',
     value: function render() {
-      return _react2.default.createElement('canvas', { ref: 'canvas', width: window.innerWidth, heigth: window.innerHeight });
+      return _react2.default.createElement('canvas', { ref: 'canvas', width: window.innerWidth, height: window.innerHeight });
     }
   }]);
 
@@ -248,7 +256,11 @@ var Mondrian = function (_React$Component) {
 
 exports.default = Mondrian;
 
-//window.innerHeight or window.innerWidth
+//blue #0000ff
+//yellow #ffff00
+//red #ff0000
+//white #ffffff
+//black #000000
 
 /***/ }),
 

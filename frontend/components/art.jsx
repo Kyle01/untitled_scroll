@@ -11,16 +11,16 @@ class Art extends React.Component{
 
     let currentItems = [];
     currentItems.push(<Mondrian />);
-    currentItems.push(<Painting />);
-    currentItems.push(<Painting />);
+    currentItems.push(<Mondrian />);
+    currentItems.push(<Mondrian />);
 
     this.state = {items: currentItems};
   }
 
   loadMoreItems(){
     let currentItems = this.state.items;
-    currentItems.push(<Painting />);
-    currentItems.push(<Painting />);
+    currentItems.push(<Mondrian />);
+    currentItems.push(<Mondrian />);
     this.setState({
       items: currentItems,
     });
