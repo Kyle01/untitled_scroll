@@ -236,6 +236,7 @@ var Mondrian = function (_React$Component) {
     key: 'updateCanvas',
     value: function updateCanvas() {
       this.drawVerticalLines();
+      this.drawHorizontalLines();
       // let height = window.innerHeight;
       // let width = window.innerWidth;
       // const ctx = this.refs.canvas.getContext('2d');
@@ -257,7 +258,7 @@ var Mondrian = function (_React$Component) {
       var ctx = this.refs.canvas.getContext('2d');
       var height = window.innerHeight;
       var width = window.innerWidth;
-      var probability = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+      var probability = [1, 1, 1, 1, 1, 1, 2, 2, 2, 3];
       var idx = Math.floor(Math.random() * probability.length);
       var num = probability[idx];
       var xStart = 0;
@@ -275,12 +276,53 @@ var Mondrian = function (_React$Component) {
           }
           break;
         case 3:
-
+          var part = width / 3 - 10;
+          for (var _k = 0; _k < 3; _k++) {
+            xStart = Math.floor(Math.random() * part);
+            ctx.fillRect(_k * part + xStart, 0, 10, height);
+          }
+          break;
       }
     }
   }, {
     key: 'drawHorizontalLines',
-    value: function drawHorizontalLines() {}
+    value: function drawHorizontalLines() {
+      var ctx = this.refs.canvas.getContext('2d');
+      var height = window.innerHeight;
+      var width = window.innerWidth;
+      var probability = [1, 1, 2, 2, 2, 3, 3, 3, 4, 4];
+      var idx = Math.floor(Math.random() * probability.length);
+      var num = probability[idx];
+      var yStart = 0;
+      ctx.fillStyle = '#000000';
+      switch (num) {
+        case 1:
+          yStart = Math.floor(Math.random() * height - 10);
+          ctx.fillRect(0, yStart, width, 10);
+          break;
+        case 2:
+          var half = height / 2 - 10;
+          for (var k = 0; k < 2; k++) {
+            yStart = Math.floor(Math.random() * half);
+            ctx.fillRect(0, k * half + yStart, width, 10);
+          }
+          break;
+        case 3:
+          var part = height / 3 - 10;
+          for (var _k2 = 0; _k2 < 3; _k2++) {
+            yStart = Math.floor(Math.random() * part);
+            ctx.fillRect(0, _k2 * part + yStart, width, 10);
+          }
+          break;
+        case 4:
+          part = height / 4 - 10;
+          for (var _k3 = 0; _k3 < 3; _k3++) {
+            yStart = Math.floor(Math.random() * part);
+            ctx.fillRect(0, _k3 * part + yStart, width, 10);
+          }
+          break;
+      }
+    }
   }, {
     key: 'render',
     value: function render() {
