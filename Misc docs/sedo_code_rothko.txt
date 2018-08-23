@@ -1,0 +1,15 @@
+Sedo code for painting Rothko
+----
+
+1) Pick a predefined color pallet
+2) pick 2 or 3 sections
+3) if 2
+  pick a divider between 30 and 70
+  draw circles of the pure color  with a 5px top and bottom buffer, 10px left and right bumper, and 5px inbetween
+    draw a cricle outside of the median color
+  gradient sides
+4) if 3
+  pick a divider between 10 and 20
+  then split the other 2
+  draw circles  with a 5px top and bottom buffer, 10px left and right bumper, and 3px inbetween
+  gradient sides

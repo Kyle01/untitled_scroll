@@ -28,5 +28,9 @@
   font-family: Lora;
   display: flex;
   justify-content: flex-end;
+}
 
+.cog-list-el:hover {
+  color: #f44242;
+  border-bottom: 2px solid #f44242;
 }

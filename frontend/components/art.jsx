@@ -1,8 +1,8 @@
 import React from 'react';
 import Waypoint from 'react-waypoint';
 
-import Painting from './painting';
 import Mondrian from './mondrian';
+import Rothko from './rothko';
 import Cog from './cog';
 
 class Art extends React.Component{
@@ -11,16 +11,16 @@ class Art extends React.Component{
     super();
 
     let currentItems = [];
+    currentItems.push(<Rothko />);
     currentItems.push(<Mondrian />);
-    currentItems.push(<Mondrian />);
-    currentItems.push(<Mondrian />);
+    currentItems.push(<Rothko />);
 
     this.state = {items: currentItems};
   }
 
   loadMoreItems(){
     let currentItems = this.state.items;
-    currentItems.push(<Mondrian />);
+    currentItems.push(<Rothko />);
     currentItems.push(<Mondrian />);
     this.setState({
       items: currentItems,

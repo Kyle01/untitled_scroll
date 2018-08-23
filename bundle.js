@@ -110,13 +110,13 @@ var _reactWaypoint = __webpack_require__(/*! react-waypoint */ "./node_modules/r
 
 var _reactWaypoint2 = _interopRequireDefault(_reactWaypoint);
 
-var _painting = __webpack_require__(/*! ./painting */ "./frontend/components/painting.jsx");
-
-var _painting2 = _interopRequireDefault(_painting);
-
 var _mondrian = __webpack_require__(/*! ./mondrian */ "./frontend/components/mondrian.jsx");
 
 var _mondrian2 = _interopRequireDefault(_mondrian);
+
+var _rothko = __webpack_require__(/*! ./rothko */ "./frontend/components/rothko.jsx");
+
+var _rothko2 = _interopRequireDefault(_rothko);
 
 var _cog = __webpack_require__(/*! ./cog */ "./frontend/components/cog.jsx");
 
@@ -139,9 +139,9 @@ var Art = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (Art.__proto__ || Object.getPrototypeOf(Art)).call(this));
 
     var currentItems = [];
+    currentItems.push(_react2.default.createElement(_rothko2.default, null));
     currentItems.push(_react2.default.createElement(_mondrian2.default, null));
-    currentItems.push(_react2.default.createElement(_mondrian2.default, null));
-    currentItems.push(_react2.default.createElement(_mondrian2.default, null));
+    currentItems.push(_react2.default.createElement(_rothko2.default, null));
 
     _this.state = { items: currentItems };
     return _this;
@@ -151,7 +151,7 @@ var Art = function (_React$Component) {
     key: 'loadMoreItems',
     value: function loadMoreItems() {
       var currentItems = this.state.items;
-      currentItems.push(_react2.default.createElement(_mondrian2.default, null));
+      currentItems.push(_react2.default.createElement(_rothko2.default, null));
       currentItems.push(_react2.default.createElement(_mondrian2.default, null));
       this.setState({
         items: currentItems
@@ -486,14 +486,139 @@ exports.default = Mondrian;
 
 /***/ }),
 
-/***/ "./frontend/components/painting.jsx":
-/*!******************************************!*\
-  !*** ./frontend/components/painting.jsx ***!
-  \******************************************/
+/***/ "./frontend/components/rothko.jsx":
+/*!****************************************!*\
+  !*** ./frontend/components/rothko.jsx ***!
+  \****************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open '/Users/kylemcveigh/Documents/Coding_exercises/App_academy/js_project/frontend/components/painting.jsx'");
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Rothko = function (_React$Component) {
+  _inherits(Rothko, _React$Component);
+
+  function Rothko(props) {
+    _classCallCheck(this, Rothko);
+
+    return _possibleConstructorReturn(this, (Rothko.__proto__ || Object.getPrototypeOf(Rothko)).call(this, props));
+  }
+
+  _createClass(Rothko, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.updateCanvas();
+    }
+  }, {
+    key: 'updateCanvas',
+    value: function updateCanvas() {
+      this.drawBackground();
+      this.drawCircle('#a24a32');
+      console.log(this.averageColor('#a24a32', '#402d2e'));
+    }
+  }, {
+    key: 'getValues',
+    value: function getValues() {
+      //gets colors pallet and determines if its gonna be a 2 or 3 design
+    }
+  }, {
+    key: 'drawBackground',
+    value: function drawBackground() {
+      var ctx = this.refs.canvas.getContext('2d');
+      ctx.fillStyle = '#402d2e'; //background
+      ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+    }
+  }, {
+    key: 'drawCircle',
+    value: function drawCircle(color) {
+      var ctx = this.refs.canvas.getContext('2d');
+      ctx.fillStyle = color;
+      ctx.shadowBlur = 1500;
+      ctx.shadowColor = color;
+      this.roundRect(ctx, 15, 10, 650, 500, 50, '#a24a32'); //orange
+
+    }
+  }, {
+    key: 'hexToRgb',
+    value: function hexToRgb(hex) {
+      return hex.replace(/^#?([a-f\d])([a-f\d])([a-f\d])$/i, function (m, r, g, b) {
+        return '#' + r + r + g + g + b + b;
+      }).substring(1).match(/.{2}/g).map(function (x) {
+        return parseInt(x, 16);
+      });
+    }
+  }, {
+    key: 'rgbToHex',
+    value: function rgbToHex(r, g, b) {
+      return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+    }
+  }, {
+    key: 'averageColor',
+    value: function averageColor(c1, c2) {
+      var color1 = this.hexToRgb(c1);
+      var color2 = this.hexToRgb(c2);
+      var red = (color1[0] + color2[0]) / 2;
+      var green = (color1[1] + color2[1]) / 2;
+      var blue = (color1[2] + color2[2]) / 2;
+      return this.rgbToHex(red, green, blue);
+    }
+  }, {
+    key: 'roundRect',
+    value: function roundRect(ctx, x, y, width, height, radius) {
+      if (typeof radius === 'undefined') {
+        radius = 25;
+      }
+      if (typeof radius === 'number') {
+        radius = { tl: radius, tr: radius, br: radius, bl: radius };
+      } else {
+        var defaultRadius = { tl: 0, tr: 0, br: 0, bl: 0 };
+        for (var side in defaultRadius) {
+          radius[side] = radius[side] || defaultRadius[side];
+        }
+      }
+      ctx.beginPath();
+      ctx.moveTo(x + radius.tl, y);
+      ctx.lineTo(x + width - radius.tr, y);
+      ctx.quadraticCurveTo(x + width, y, x + width, y + radius.tr);
+      ctx.lineTo(x + width, y + height - radius.br);
+      ctx.quadraticCurveTo(x + width, y + height, x + width - radius.br, y + height);
+      ctx.lineTo(x + radius.bl, y + height);
+      ctx.quadraticCurveTo(x, y + height, x, y + height - radius.bl);
+      ctx.lineTo(x, y + radius.tl);
+      ctx.quadraticCurveTo(x, y, x + radius.tl, y);
+      ctx.closePath();
+      ctx.fill();
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement('canvas', { ref: 'canvas', width: window.innerWidth, height: window.innerHeight });
+    }
+  }]);
+
+  return Rothko;
+}(_react2.default.Component);
+
+exports.default = Rothko;
 
 /***/ }),
 
