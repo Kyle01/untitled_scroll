@@ -1,32 +1,32 @@
 .cog-main {
-  position: fixed;
-  top: 20px;
-  right: 20px;
+
 }
 
 .cog-image {
   height: 35px;
   width: 35px;
+  position: fixed;
+  top: 20px;
+  right: 20px;
 }
 
 .cog-list {
   display: none;
-}
-
-
-
-.cog-image:hover .cog-list{
-  background-color: yellow;
-}
-
-li:hover .cog-list{
-  display:block;
+  position: fixed;
+  top: 55px;
+  right: 15px;
 }
 
 .cog-list-el {
-  background-color: #ffffff;
   list-style: none;
-  font-size: 18px;
-  padding: 10px;
+  font-size: 22px;
   color: #ffbd54;
+  border-bottom: 2px solid #ffbd54;
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: 5px;
+  font-family: Lora;
+  display: flex;
+  justify-content: flex-end;
+
 }
