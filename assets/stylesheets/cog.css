@@ -1,10 +1,32 @@
 .cog-main {
   position: fixed;
-  top: 15px;
-  right: 15px;
+  top: 20px;
+  right: 20px;
 }
 
 .cog-image {
   height: 35px;
   width: 35px;
+}
+
+.cog-list {
+  display: none;
+}
+
+
+
+.cog-image:hover .cog-list{
+  background-color: yellow;
+}
+
+li:hover .cog-list{
+  display:block;
+}
+
+.cog-list-el {
+  background-color: #ffffff;
+  list-style: none;
+  font-size: 18px;
+  padding: 10px;
+  color: #ffbd54;
 }

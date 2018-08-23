@@ -220,27 +220,63 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-//look up canvas. It will be much better for drawing.
 var Cog = function (_React$Component) {
   _inherits(Cog, _React$Component);
 
   function Cog() {
     _classCallCheck(this, Cog);
 
-    return _possibleConstructorReturn(this, (Cog.__proto__ || Object.getPrototypeOf(Cog)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (Cog.__proto__ || Object.getPrototypeOf(Cog)).call(this));
+
+    _this.displayProperty = 'none';
+    return _this;
   }
 
   _createClass(Cog, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      document.querySelector('body').addEventListener('click', function () {
+        var dropdown = document.getElementById('dropdown');
+        dropdown.style.display = 'none';
+      });
+    }
+  }, {
+    key: 'handleClick',
+    value: function handleClick() {
+      var dropdown = document.getElementById('dropdown');
+      this.displayProperty = 'block' === this.displayProperty ? 'none' : 'block';
+      dropdown.style.display = this.displayProperty;
+    }
+  }, {
     key: 'render',
     value: function render() {
-      var styles = {
-        position: 'fixed'
-      };
+      var _this2 = this;
 
       return _react2.default.createElement(
         'div',
-        { style: styles, className: 'cog-main' },
-        _react2.default.createElement('img', { className: 'cog-image', src: '/Users/kylemcveigh/Documents/Coding_exercises/App_academy/js_project/assets/images/wheel.png' })
+        { className: 'cog-main' },
+        _react2.default.createElement('img', { onClick: function onClick() {
+            return _this2.handleClick();
+          }, className: 'cog-image', src: '/Users/kylemcveigh/Documents/Coding_exercises/App_academy/js_project/assets/images/wheel.png' }),
+        _react2.default.createElement(
+          'ul',
+          { className: 'cog-list', id: 'dropdown' },
+          _react2.default.createElement(
+            'li',
+            { className: 'cog-list-el' },
+            'About'
+          ),
+          _react2.default.createElement(
+            'li',
+            { className: 'cog-list-el' },
+            'Mondrian'
+          ),
+          _react2.default.createElement(
+            'li',
+            { className: 'cog-list-el' },
+            'Rothko'
+          )
+        )
       );
     }
   }]);
@@ -250,7 +286,7 @@ var Cog = function (_React$Component) {
 
 exports.default = Cog;
 
-//window.innerHeight or window.innerWidth
+//event stopPropagation()
 
 /***/ }),
 
@@ -301,9 +337,6 @@ var Mondrian = function (_React$Component) {
     value: function componentDidMount() {
       this.updateCanvas();
     }
-
-    //This is my example canvas. Likely to never be used..
-
   }, {
     key: 'updateCanvas',
     value: function updateCanvas() {

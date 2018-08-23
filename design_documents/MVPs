@@ -20,7 +20,7 @@ Untitled Scroll is a artist creation that makes modern art using algorithms as a
   * Setting cog allows for users to pick an artist (only 1 artist will be available at this point)
   * Adequate styling
   * Smooth, bug-free navigation
-5. Rothko infinite scroll (8/24/2018, 2 day)
+5. Rothko infinite scroll (8/24/2018, 1 day)
   * If chosen, Rothko styling painting is generated using predefined algorithms
   * Rothko style paintings are generated indefinitely as the user scrolls through
   * URL is changed to reflect the different artist (./untitlied_scroll/rothko)
@@ -32,6 +32,5 @@ Untitled Scroll is a artist creation that makes modern art using algorithms as a
 7. Pollock infinite scroll
   * If chosen, Pollock styling painting is generated using predefined algorithms
   * Pollock style paintings are generated indefinitely as the user scrolls through
-  * URL is changed to reflect the different artist (./untitlied_scroll/rothko)
   * Adequate styling
   * Smooth, bug-free navigation

@@ -14,7 +14,6 @@ class Mondrian extends React.Component{
     this.updateCanvas();
   }
 
-  //This is my example canvas. Likely to never be used..
   updateCanvas(){
     this.drawVerticalLines();
     this.drawHorizontalLines();
