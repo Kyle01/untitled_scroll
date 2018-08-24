@@ -111,8 +111,10 @@ class Mondrian extends React.Component{
       for(let k = 0; k < this.yCoordinates.length; k++){
         helper[0] = this.xCoordinates[j];
         helper[1] = this.yCoordinates[k];
-        j === this.xCoordinates.length-1 ? helper[2] = window.innerWidth - this.xCoordinates[j] : helper[2] = this.xCoordinates[j+1] - this.xCoordinates[j] - 10;
-        k === this.yCoordinates.length-1 ? helper[3] = window.innerHeight - this.yCoordinates[k] : helper[3] = this.yCoordinates[k+1] - this.yCoordinates[k] - 10;
+        j === this.xCoordinates.length-1 ?
+          helper[2] = window.innerWidth - this.xCoordinates[j] : helper[2] = this.xCoordinates[j+1] - this.xCoordinates[j] - 10;
+        k === this.yCoordinates.length-1 ?
+          helper[3] = window.innerHeight - this.yCoordinates[k] : helper[3] = this.yCoordinates[k+1] - this.yCoordinates[k] - 10;
         this.squares.push(helper);
         helper = [0, 0, 0, 0]
       }
