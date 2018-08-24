@@ -122,10 +122,6 @@ var _villareal = __webpack_require__(/*! ./villareal */ "./frontend/components/v
 
 var _villareal2 = _interopRequireDefault(_villareal);
 
-var _cog = __webpack_require__(/*! ./cog */ "./frontend/components/cog.jsx");
-
-var _cog2 = _interopRequireDefault(_cog);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -135,6 +131,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 //Other artist: Leo Villareal
+//Frank Stella
 
 var Art = function (_React$Component) {
   _inherits(Art, _React$Component);
@@ -144,21 +141,66 @@ var Art = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (Art.__proto__ || Object.getPrototypeOf(Art)).call(this));
 
+    _this.state = {};
+    _this.displayProperty = 'none';
+    _this.displayAbout = 'none';
+
     var currentItems = [];
     currentItems.push(_react2.default.createElement(_rothko2.default, null));
     currentItems.push(_react2.default.createElement(_rothko2.default, null));
     currentItems.push(_react2.default.createElement(_rothko2.default, null));
+    _this.state = { items: currentItems, artist: 'Rothko' };
 
-    _this.state = { items: currentItems };
+    _this.changeArtist = _this.changeArtist.bind(_this);
     return _this;
   }
 
   _createClass(Art, [{
+    key: 'populateItems',
+    value: function populateItems(painter) {
+      var currentItems = [];
+
+      switch (painter) {
+        case 'Rothko':
+          currentItems.push(_react2.default.createElement(_rothko2.default, null));
+          currentItems.push(_react2.default.createElement(_rothko2.default, null));
+          currentItems.push(_react2.default.createElement(_rothko2.default, null));
+          break;
+        case 'Mondrian':
+          currentItems.push(_react2.default.createElement(_mondrian2.default, null));
+          currentItems.push(_react2.default.createElement(_mondrian2.default, null));
+          currentItems.push(_react2.default.createElement(_mondrian2.default, null));
+          break;
+      }
+
+      return currentItems;
+    }
+  }, {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      document.querySelector('body').addEventListener('click', function () {
+        var dropdown = document.getElementById('dropdown');
+        dropdown.style.display = 'none';
+        var about = document.getElementById('about');
+        about.style.display = 'none';
+      });
+    }
+  }, {
     key: 'loadMoreItems',
     value: function loadMoreItems() {
       var currentItems = this.state.items;
-      currentItems.push(_react2.default.createElement(_rothko2.default, null));
-      currentItems.push(_react2.default.createElement(_rothko2.default, null));
+
+      switch (this.state.artist) {
+        case 'Rothko':
+          currentItems.push(_react2.default.createElement(_rothko2.default, null));
+          currentItems.push(_react2.default.createElement(_rothko2.default, null));
+          break;
+        case 'Mondrian':
+          currentItems.push(_react2.default.createElement(_mondrian2.default, null));
+          currentItems.push(_react2.default.createElement(_mondrian2.default, null));
+          break;
+
+      }
       this.setState({
         items: currentItems
       });
@@ -175,78 +217,6 @@ var Art = function (_React$Component) {
       });
     }
   }, {
-    key: 'render',
-    value: function render() {
-      var _this2 = this;
-
-      return _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(_cog2.default, null),
-        this.renderItems(),
-        _react2.default.createElement(_reactWaypoint2.default, { onEnter: function onEnter() {
-            _this2.loadMoreItems();
-          }, threshold: 2.0 })
-      );
-    }
-  }]);
-
-  return Art;
-}(_react2.default.Component);
-
-exports.default = Art;
-
-/***/ }),
-
-/***/ "./frontend/components/cog.jsx":
-/*!*************************************!*\
-  !*** ./frontend/components/cog.jsx ***!
-  \*************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Cog = function (_React$Component) {
-  _inherits(Cog, _React$Component);
-
-  function Cog() {
-    _classCallCheck(this, Cog);
-
-    var _this = _possibleConstructorReturn(this, (Cog.__proto__ || Object.getPrototypeOf(Cog)).call(this));
-
-    _this.displayProperty = 'none';
-    return _this;
-  }
-
-  _createClass(Cog, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      document.querySelector('body').addEventListener('click', function () {
-        var dropdown = document.getElementById('dropdown');
-        dropdown.style.display = 'none';
-      });
-    }
-  }, {
     key: 'handleClick',
     value: function handleClick() {
       var dropdown = document.getElementById('dropdown');
@@ -254,8 +224,8 @@ var Cog = function (_React$Component) {
       dropdown.style.display = this.displayProperty;
     }
   }, {
-    key: 'render',
-    value: function render() {
+    key: 'drawCog',
+    value: function drawCog() {
       var _this2 = this;
 
       return _react2.default.createElement(
@@ -269,30 +239,92 @@ var Cog = function (_React$Component) {
           { className: 'cog-list', id: 'dropdown' },
           _react2.default.createElement(
             'li',
-            { className: 'cog-list-el' },
+            { onClick: function onClick() {
+                return _this2.handleAbout();
+              }, className: 'cog-list-el' },
             'About'
           ),
           _react2.default.createElement(
             'li',
-            { className: 'cog-list-el' },
+            { onClick: this.changeArtist.bind(this), value: 'Mondrian', className: 'cog-list-el' },
             'Mondrian'
           ),
           _react2.default.createElement(
             'li',
-            { className: 'cog-list-el' },
+            { onClick: this.changeArtist, value: 'Rothko', className: 'cog-list-el' },
             'Rothko'
           )
+        ),
+        this.drawAbout()
+      );
+    }
+  }, {
+    key: 'handleAbout',
+    value: function handleAbout() {
+      var about = document.getElementById('about');
+      this.displayAbout = 'block' === this.displayAbout ? 'none' : 'block';
+      about.style.display = this.displayAbout;
+    }
+  }, {
+    key: 'drawAbout',
+    value: function drawAbout() {
+      return _react2.default.createElement(
+        'div',
+        { className: 'cog-about-main', id: 'about' },
+        _react2.default.createElement(
+          'p',
+          null,
+          'About'
+        ),
+        _react2.default.createElement(
+          'p',
+          null,
+          'Kyle McVeigh made this'
+        ),
+        _react2.default.createElement(
+          'p',
+          null,
+          'LinkedIn'
+        ),
+        _react2.default.createElement(
+          'p',
+          null,
+          'Github'
+        ),
+        _react2.default.createElement(
+          'p',
+          null,
+          'Website'
         )
+      );
+    }
+  }, {
+    key: 'changeArtist',
+    value: function changeArtist(e) {
+      e.preventDefault();
+      this.setState({ artist: e.target.innerText, items: this.populateItems(e.target.innerText) });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this3 = this;
+
+      return _react2.default.createElement(
+        'div',
+        null,
+        this.drawCog(),
+        this.renderItems(),
+        _react2.default.createElement(_reactWaypoint2.default, { onEnter: function onEnter() {
+            _this3.loadMoreItems();
+          }, threshold: 2.0 })
       );
     }
   }]);
 
-  return Cog;
+  return Art;
 }(_react2.default.Component);
 
-exports.default = Cog;
-
-//event stopPropagation()
+exports.default = Art;
 
 /***/ }),
 

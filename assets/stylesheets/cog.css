@@ -34,3 +34,10 @@
   color: #f44242;
   border-bottom: 2px solid #f44242;
 }
+
+.cog-about-main {
+  display: block;
+  position:fixed;
+  top: 25%;
+  left: 25%;
+}
