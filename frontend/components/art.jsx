@@ -3,7 +3,11 @@ import Waypoint from 'react-waypoint';
 
 import Mondrian from './mondrian';
 import Rothko from './rothko';
+import Villareal from './villareal';
+
 import Cog from './cog';
+
+//Other artist: Leo Villareal
 
 class Art extends React.Component{
 
@@ -12,7 +16,7 @@ class Art extends React.Component{
 
     let currentItems = [];
     currentItems.push(<Rothko />);
-    currentItems.push(<Mondrian />);
+    currentItems.push(<Rothko />);
     currentItems.push(<Rothko />);
 
     this.state = {items: currentItems};
@@ -21,7 +25,7 @@ class Art extends React.Component{
   loadMoreItems(){
     let currentItems = this.state.items;
     currentItems.push(<Rothko />);
-    currentItems.push(<Mondrian />);
+    currentItems.push(<Rothko />);
     this.setState({
       items: currentItems,
     });

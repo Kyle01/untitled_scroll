@@ -11,29 +11,80 @@ class Rothko extends React.Component{
   }
 
   updateCanvas(){
-    this.drawBackground();
-    this.drawCircle('#a24a32');
-    console.log(this.averageColor('#a24a32', '#402d2e'));
+    this.drawTwo();
   }
 
-  getValues(){
-    //gets colors pallet and determines if its gonna be a 2 or 3 design
+  //randomly picks order for second colors
+  getTwoColors(){
+    let pick = Math.floor(Math.random() * 9);
+    let order = Math.floor(Math.random() * 2);
+
+    let colors = [
+      ['#563632', '#d5652f', '#232549'],
+      ['#c15033', '#1c140c', '#8f2313'],
+      ['#ebaeab', '#f4bd59', '#c52f2e'],
+      ['#cd8859', '#c34629', '#171410'],
+      ['#c47a38', '#c16d48', '#e6d963'],
+      ['#324068', '#222b27', '#32464c'],
+      ['#ea9463', '#695f5b', '#d36fa4'],
+      ['#a87967', '#ad814d', '#326495'],
+      ['#be554c', '#822016', '#f7ccd1'],
+      ['#4a95b5', '#a5b1c4', '#3a6db1'],
+    ];
+    let answer = [];
+    switch (order) {
+      case 0:
+        answer[0] = colors[pick][0]
+        answer[1] = colors[pick][1]
+        answer[2] = colors[pick][2]
+        return answer;
+      case 1:
+        answer[0] = colors[pick][0]
+        answer[1] = colors[pick][2]
+        answer[2] = colors[pick][1]
+        return answer;
+    }
   }
 
-  drawBackground(){
+  //returns [[x y width height][x y width height]]
+  getDimensionsTwo(){
+    let width = window.innerWidth-30;
+    let height = window.innerHeight-40;
+    let choices = [
+      [[15, 15, width, height*.3], [15, height*.3+20, width, height*.7]],
+      [[15, 15, width, height*.4], [15, height*.4+20, width, height*.6]],
+      [[15, 15, width, height*.5], [15, height*.5+20, width, height*.5]],
+      [[15, 15, width, height*.6], [15, height*.6+20, width, height*.4]],
+      [[15, 15, width, height*.7], [15, height*.7+20, width, height*.3]],
+    ]
+    let idx = Math.floor(Math.random() * 4)
+    return choices[idx];
+  }
+
+  drawTwo(){
+    let colors = this.getTwoColors();
+    let dx = this.getDimensionsTwo();
     const ctx = this.refs.canvas.getContext('2d');
-    ctx.fillStyle = '#402d2e'; //background
+    ctx.fillStyle = colors[0];
     ctx.fillRect(0,0,window.innerWidth, window.innerHeight);
+    this.drawCircle(colors[0], colors[1], dx[0][0], dx[0][1], dx[0][2], dx[0][3]);
+    this.drawCircle(colors[0], colors[2], dx[1][0], dx[1][1], dx[1][2], dx[1][3]);
   }
-
-  drawCircle(color){
+  
+  drawCircle(backgroundColor, color, x, y, width, height){
     const ctx = this.refs.canvas.getContext('2d');
-    ctx.fillStyle = color;
+    let firstColor = this.averageColor(backgroundColor, color);
     ctx.shadowBlur= 1500;
-    ctx.shadowColor=color;
-    this.roundRect(ctx, 15, 10, 650, 500, 50, '#a24a32') //orange
-
-
+    ctx.shadowColor = firstColor;
+    ctx.fillStyle = firstColor;
+    this.roundRect(ctx, x, y, width, height, 50, firstColor);
+    let secondColor = this.averageColor(firstColor,color);
+    ctx.shadowColor = secondColor;
+    ctx.fillStyle = secondColor;
+    this.roundRect(ctx, x+10, y+20, width-25, height-25, 50, secondColor)
+    ctx.shadowColor = color;
+    ctx.fillStyle = color;
+    this.roundRect(ctx, x+20, y+20, width-25, height-25, 50, color)
   }
 
   hexToRgb(hex){

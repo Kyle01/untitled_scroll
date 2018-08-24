@@ -118,6 +118,10 @@ var _rothko = __webpack_require__(/*! ./rothko */ "./frontend/components/rothko.
 
 var _rothko2 = _interopRequireDefault(_rothko);
 
+var _villareal = __webpack_require__(/*! ./villareal */ "./frontend/components/villareal.jsx");
+
+var _villareal2 = _interopRequireDefault(_villareal);
+
 var _cog = __webpack_require__(/*! ./cog */ "./frontend/components/cog.jsx");
 
 var _cog2 = _interopRequireDefault(_cog);
@@ -130,6 +134,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+//Other artist: Leo Villareal
+
 var Art = function (_React$Component) {
   _inherits(Art, _React$Component);
 
@@ -140,7 +146,7 @@ var Art = function (_React$Component) {
 
     var currentItems = [];
     currentItems.push(_react2.default.createElement(_rothko2.default, null));
-    currentItems.push(_react2.default.createElement(_mondrian2.default, null));
+    currentItems.push(_react2.default.createElement(_rothko2.default, null));
     currentItems.push(_react2.default.createElement(_rothko2.default, null));
 
     _this.state = { items: currentItems };
@@ -152,7 +158,7 @@ var Art = function (_React$Component) {
     value: function loadMoreItems() {
       var currentItems = this.state.items;
       currentItems.push(_react2.default.createElement(_rothko2.default, null));
-      currentItems.push(_react2.default.createElement(_mondrian2.default, null));
+      currentItems.push(_react2.default.createElement(_rothko2.default, null));
       this.setState({
         items: currentItems
       });
@@ -531,31 +537,71 @@ var Rothko = function (_React$Component) {
   }, {
     key: 'updateCanvas',
     value: function updateCanvas() {
-      this.drawBackground();
-      this.drawCircle('#a24a32');
-      console.log(this.averageColor('#a24a32', '#402d2e'));
+      this.drawTwo();
+    }
+
+    //randomly picks order for second colors
+
+  }, {
+    key: 'getTwoColors',
+    value: function getTwoColors() {
+      var pick = Math.floor(Math.random() * 9);
+      var order = Math.floor(Math.random() * 2);
+
+      var colors = [['#563632', '#d5652f', '#232549'], ['#c15033', '#1c140c', '#8f2313'], ['#ebaeab', '#f4bd59', '#c52f2e'], ['#cd8859', '#c34629', '#171410'], ['#c47a38', '#c16d48', '#e6d963'], ['#324068', '#222b27', '#32464c'], ['#ea9463', '#695f5b', '#d36fa4'], ['#a87967', '#ad814d', '#326495'], ['#be554c', '#822016', '#f7ccd1'], ['#4a95b5', '#a5b1c4', '#3a6db1']];
+      var answer = [];
+      switch (order) {
+        case 0:
+          answer[0] = colors[pick][0];
+          answer[1] = colors[pick][1];
+          answer[2] = colors[pick][2];
+          return answer;
+        case 1:
+          answer[0] = colors[pick][0];
+          answer[1] = colors[pick][2];
+          answer[2] = colors[pick][1];
+          return answer;
+      }
+    }
+
+    //returns [[x y width height][x y width height]]
+
+  }, {
+    key: 'getDimensionsTwo',
+    value: function getDimensionsTwo() {
+      var width = window.innerWidth - 30;
+      var height = window.innerHeight - 40;
+      var choices = [[[15, 15, width, height * .3], [15, height * .3 + 20, width, height * .7]], [[15, 15, width, height * .4], [15, height * .4 + 20, width, height * .6]], [[15, 15, width, height * .5], [15, height * .5 + 20, width, height * .5]], [[15, 15, width, height * .6], [15, height * .6 + 20, width, height * .4]], [[15, 15, width, height * .7], [15, height * .7 + 20, width, height * .3]]];
+      var idx = Math.floor(Math.random() * 4);
+      return choices[idx];
     }
   }, {
-    key: 'getValues',
-    value: function getValues() {
-      //gets colors pallet and determines if its gonna be a 2 or 3 design
-    }
-  }, {
-    key: 'drawBackground',
-    value: function drawBackground() {
+    key: 'drawTwo',
+    value: function drawTwo() {
+      var colors = this.getTwoColors();
+      var dx = this.getDimensionsTwo();
       var ctx = this.refs.canvas.getContext('2d');
-      ctx.fillStyle = '#402d2e'; //background
+      ctx.fillStyle = colors[0];
       ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+      this.drawCircle(colors[0], colors[1], dx[0][0], dx[0][1], dx[0][2], dx[0][3]);
+      this.drawCircle(colors[0], colors[2], dx[1][0], dx[1][1], dx[1][2], dx[1][3]);
     }
   }, {
     key: 'drawCircle',
-    value: function drawCircle(color) {
+    value: function drawCircle(backgroundColor, color, x, y, width, height) {
       var ctx = this.refs.canvas.getContext('2d');
-      ctx.fillStyle = color;
+      var firstColor = this.averageColor(backgroundColor, color);
       ctx.shadowBlur = 1500;
+      ctx.shadowColor = firstColor;
+      ctx.fillStyle = firstColor;
+      this.roundRect(ctx, x, y, width, height, 50, firstColor);
+      var secondColor = this.averageColor(firstColor, color);
+      ctx.shadowColor = secondColor;
+      ctx.fillStyle = secondColor;
+      this.roundRect(ctx, x + 10, y + 20, width - 25, height - 25, 50, secondColor);
       ctx.shadowColor = color;
-      this.roundRect(ctx, 15, 10, 650, 500, 50, '#a24a32'); //orange
-
+      ctx.fillStyle = color;
+      this.roundRect(ctx, x + 20, y + 20, width - 25, height - 25, 50, color);
     }
   }, {
     key: 'hexToRgb',
@@ -619,6 +665,69 @@ var Rothko = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = Rothko;
+
+/***/ }),
+
+/***/ "./frontend/components/villareal.jsx":
+/*!*******************************************!*\
+  !*** ./frontend/components/villareal.jsx ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Villareal = function (_React$Component) {
+  _inherits(Villareal, _React$Component);
+
+  function Villareal(props) {
+    _classCallCheck(this, Villareal);
+
+    return _possibleConstructorReturn(this, (Villareal.__proto__ || Object.getPrototypeOf(Villareal)).call(this, props));
+  }
+
+  _createClass(Villareal, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.updateCanvas();
+    }
+  }, {
+    key: 'updateCanvas',
+    value: function updateCanvas() {
+      var ctx = this.refs.canvas.getContext('2d');
+      ctx.fillStyle = '#000000';
+      ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement('canvas', { ref: 'canvas', width: window.innerWidth, height: window.innerHeight });
+    }
+  }]);
+
+  return Villareal;
+}(_react2.default.Component);
+
+exports.default = Villareal;
 
 /***/ }),
 
