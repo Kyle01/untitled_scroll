@@ -118,7 +118,7 @@ class Art extends React.Component{
           <img className='about-img' src='assets/images/github_mark.png'></img></a>
           <a href='https://www.linkedin.com/in/kyle-mcveigh/'>
           <img className='about-img' src='assets/images/linkedin_mark.png'></img></a>
-          <a href='https://www.kylemcveigh.com'>
+          <a href='http://www.kylemcveigh.com'>
           <img className='about-img' src='assets/images/user_mark.png'></img></a>
         </div>
       </div>

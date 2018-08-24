@@ -301,7 +301,7 @@ var Art = function (_React$Component) {
           ),
           _react2.default.createElement(
             'a',
-            { href: 'https://www.kylemcveigh.com' },
+            { href: 'http://www.kylemcveigh.com' },
             _react2.default.createElement('img', { className: 'about-img', src: 'assets/images/user_mark.png' })
           )
         )
