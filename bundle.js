@@ -233,7 +233,7 @@ var Art = function (_React$Component) {
         { className: 'cog-main' },
         _react2.default.createElement('img', { onClick: function onClick() {
             return _this2.handleClick();
-          }, className: 'cog-image', src: '/Users/kylemcveigh/Documents/Coding_exercises/App_academy/js_project/assets/images/wheel.png' }),
+          }, className: 'cog-image', src: 'assets/images/wheel.png' }),
         _react2.default.createElement(
           'ul',
           { className: 'cog-list', id: 'dropdown' },
@@ -246,7 +246,7 @@ var Art = function (_React$Component) {
           ),
           _react2.default.createElement(
             'li',
-            { onClick: this.changeArtist.bind(this), value: 'Mondrian', className: 'cog-list-el' },
+            { onClick: this.changeArtist, value: 'Mondrian', className: 'cog-list-el' },
             'Mondrian'
           ),
           _react2.default.createElement(
@@ -273,28 +273,37 @@ var Art = function (_React$Component) {
         { className: 'cog-about-main', id: 'about' },
         _react2.default.createElement(
           'p',
-          null,
+          { className: 'about-about' },
           'About'
         ),
         _react2.default.createElement(
           'p',
-          null,
-          'Kyle McVeigh made this'
+          { className: 'about-name' },
+          'Created by Kyle McVeigh'
         ),
         _react2.default.createElement(
           'p',
-          null,
-          'LinkedIn'
+          { className: 'about-year' },
+          '2018 \xA9'
         ),
         _react2.default.createElement(
-          'p',
-          null,
-          'Github'
-        ),
-        _react2.default.createElement(
-          'p',
-          null,
-          'Website'
+          'div',
+          { className: 'about-img-container' },
+          _react2.default.createElement(
+            'a',
+            { href: 'https://github.com/Kyle01/' },
+            _react2.default.createElement('img', { className: 'about-img', src: 'assets/images/github_mark.png' })
+          ),
+          _react2.default.createElement(
+            'a',
+            { href: 'https://www.linkedin.com/in/kyle-mcveigh/' },
+            _react2.default.createElement('img', { className: 'about-img', src: 'assets/images/linkedin_mark.png' })
+          ),
+          _react2.default.createElement(
+            'a',
+            { href: 'https://www.kylemcveigh.com' },
+            _react2.default.createElement('img', { className: 'about-img', src: 'assets/images/user_mark.png' })
+          )
         )
       );
     }

@@ -90,10 +90,10 @@ class Art extends React.Component{
   drawCog(){
     return (
       <div className='cog-main'>
-        <img onClick={() => this.handleClick()} className='cog-image' src={'/Users/kylemcveigh/Documents/Coding_exercises/App_academy/js_project/assets/images/wheel.png'}/>
+        <img onClick={() => this.handleClick()} className='cog-image' src='assets/images/wheel.png'/>
         <ul className='cog-list' id='dropdown'>
           <li onClick={() => this.handleAbout()}className='cog-list-el'>About</li>
-          <li onClick={this.changeArtist.bind(this)} value="Mondrian" className='cog-list-el'>Mondrian</li>
+          <li onClick={this.changeArtist} value="Mondrian" className='cog-list-el'>Mondrian</li>
           <li onClick={this.changeArtist} value="Rothko" className='cog-list-el'>Rothko</li>
         </ul>
         { this.drawAbout() }
@@ -110,11 +110,17 @@ class Art extends React.Component{
   drawAbout(){
     return (
       <div className='cog-about-main' id='about'>
-        <p>About</p>
-        <p>Kyle McVeigh made this</p>
-        <p>LinkedIn</p>
-        <p>Github</p>
-        <p>Website</p>
+        <p className='about-about'>About</p>
+        <p className='about-name'>Created by Kyle McVeigh</p>
+        <p className='about-year'>2018 ©</p>
+        <div className='about-img-container'>
+          <a href='https://github.com/Kyle01/'>
+          <img className='about-img' src='assets/images/github_mark.png'></img></a>
+          <a href='https://www.linkedin.com/in/kyle-mcveigh/'>
+          <img className='about-img' src='assets/images/linkedin_mark.png'></img></a>
+          <a href='https://www.kylemcveigh.com'>
+          <img className='about-img' src='assets/images/user_mark.png'></img></a>
+        </div>
       </div>
     )
   }
