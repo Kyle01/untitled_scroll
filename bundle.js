@@ -86,6 +86,119 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./frontend/components/Stella.jsx":
+/*!****************************************!*\
+  !*** ./frontend/components/Stella.jsx ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Stella = function (_React$Component) {
+  _inherits(Stella, _React$Component);
+
+  function Stella(props) {
+    _classCallCheck(this, Stella);
+
+    return _possibleConstructorReturn(this, (Stella.__proto__ || Object.getPrototypeOf(Stella)).call(this, props));
+  }
+
+  _createClass(Stella, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.updateCanvas();
+    }
+  }, {
+    key: "updateCanvas",
+    value: function updateCanvas() {
+      var ctx = this.refs.canvas.getContext("2d");
+      this.drawSquare(ctx, 0, 0, window.innerWidth, window.innerHeight, [122, 122, 122]);
+    }
+  }, {
+    key: "drawSquare",
+    value: function drawSquare(ctx, x, y, xSize, ySize, currentColor) {
+      if (xSize < 50 || ySize < 50) {
+        return;
+      }
+
+      var color = this.getColor(currentColor);
+
+      ctx.fillStyle = "rgba(" + color[0] + ", " + color[1] + ", " + color[2] + ")";
+      ctx.fillRect(x, y, xSize, ySize);
+
+      var nextX = x + xSize * 0.1;
+      var nextY = y + ySize * 0.1;
+
+      this.drawSquare(ctx, nextX, nextY, xSize * 0.8, ySize * 0.8, color);
+    }
+  }, {
+    key: "getColor",
+    value: function getColor(currentColor) {
+      var newRed = this.modifyColor(currentColor[0]);
+      var newGreen = this.modifyColor(currentColor[1]);
+      var newBlue = this.modifyColor(currentColor[2]);
+
+      return [newRed, newGreen, newBlue];
+    }
+  }, {
+    key: "modifyColor",
+    value: function modifyColor(color) {
+      if (Math.floor(Math.random() * 2) == 0) {
+        var number = color + Math.random() * 100;
+        if (number > 255) {
+          return 255;
+        } else if (number < 0) {
+          return 0;
+        }
+        return number;
+      } else {
+        var _number = color - Math.random() * 100;
+        if (_number > 255) {
+          return 255;
+        } else if (_number < 0) {
+          return 0;
+        }
+        return _number;
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement("canvas", {
+        ref: "canvas",
+        width: window.innerWidth,
+        height: window.innerHeight
+      });
+    }
+  }]);
+
+  return Stella;
+}(_react2.default.Component);
+
+exports.default = Stella;
+
+/***/ }),
+
 /***/ "./frontend/components/art.jsx":
 /*!*************************************!*\
   !*** ./frontend/components/art.jsx ***!
@@ -118,9 +231,9 @@ var _rothko = __webpack_require__(/*! ./rothko */ "./frontend/components/rothko.
 
 var _rothko2 = _interopRequireDefault(_rothko);
 
-var _villareal = __webpack_require__(/*! ./villareal */ "./frontend/components/villareal.jsx");
+var _Stella = __webpack_require__(/*! ./Stella */ "./frontend/components/Stella.jsx");
 
-var _villareal2 = _interopRequireDefault(_villareal);
+var _Stella2 = _interopRequireDefault(_Stella);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -131,7 +244,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 //Other artist: Leo Villareal
-//Frank Stella
 
 var Art = function (_React$Component) {
   _inherits(Art, _React$Component);
@@ -142,190 +254,238 @@ var Art = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (Art.__proto__ || Object.getPrototypeOf(Art)).call(this));
 
     _this.state = {};
-    _this.displayProperty = 'none';
-    _this.displayAbout = 'none';
+    _this.displayProperty = "none";
+    _this.displayAbout = "none";
 
     var currentItems = [];
-    currentItems.push(_react2.default.createElement(_rothko2.default, null));
-    currentItems.push(_react2.default.createElement(_rothko2.default, null));
-    currentItems.push(_react2.default.createElement(_rothko2.default, null));
-    _this.state = { items: currentItems, artist: 'Rothko' };
+    currentItems.push(_react2.default.createElement(_mondrian2.default, null));
+    currentItems.push(_react2.default.createElement(_mondrian2.default, null));
+    currentItems.push(_react2.default.createElement(_mondrian2.default, null));
+    _this.state = { items: currentItems, artist: "Mondrian" };
 
     _this.changeArtist = _this.changeArtist.bind(_this);
     return _this;
   }
 
   _createClass(Art, [{
-    key: 'populateItems',
+    key: "populateItems",
     value: function populateItems(painter) {
       var currentItems = [];
 
       switch (painter) {
-        case 'Rothko':
+        case "Mondrian":
+          currentItems.push(_react2.default.createElement(_mondrian2.default, null));
+          currentItems.push(_react2.default.createElement(_mondrian2.default, null));
+          currentItems.push(_react2.default.createElement(_mondrian2.default, null));
+          break;
+        case "Rothko":
           currentItems.push(_react2.default.createElement(_rothko2.default, null));
           currentItems.push(_react2.default.createElement(_rothko2.default, null));
           currentItems.push(_react2.default.createElement(_rothko2.default, null));
           break;
-        case 'Mondrian':
-          currentItems.push(_react2.default.createElement(_mondrian2.default, null));
-          currentItems.push(_react2.default.createElement(_mondrian2.default, null));
-          currentItems.push(_react2.default.createElement(_mondrian2.default, null));
+        case "Stella":
+          currentItems.push(_react2.default.createElement(_Stella2.default, null));
+          currentItems.push(_react2.default.createElement(_Stella2.default, null));
+          currentItems.push(_react2.default.createElement(_Stella2.default, null));
           break;
       }
 
       return currentItems;
     }
   }, {
-    key: 'componentDidMount',
+    key: "componentDidMount",
     value: function componentDidMount() {
-      document.querySelector('body').addEventListener('click', function () {
-        var dropdown = document.getElementById('dropdown');
-        dropdown.style.display = 'none';
-        var about = document.getElementById('about');
-        about.style.display = 'none';
+      document.querySelector("body").addEventListener("click", function () {
+        var dropdown = document.getElementById("dropdown");
+        dropdown.style.display = "none";
+        var about = document.getElementById("about");
+        about.style.display = "none";
       });
     }
   }, {
-    key: 'loadMoreItems',
+    key: "loadMoreItems",
     value: function loadMoreItems() {
       var currentItems = this.state.items;
 
       switch (this.state.artist) {
-        case 'Rothko':
+        case "Rothko":
           currentItems.push(_react2.default.createElement(_rothko2.default, null));
           currentItems.push(_react2.default.createElement(_rothko2.default, null));
           break;
-        case 'Mondrian':
+        case "Mondrian":
           currentItems.push(_react2.default.createElement(_mondrian2.default, null));
           currentItems.push(_react2.default.createElement(_mondrian2.default, null));
           break;
-
+        case "Stella":
+          currentItems.push(_react2.default.createElement(_Stella2.default, null));
+          currentItems.push(_react2.default.createElement(_Stella2.default, null));
+          break;
       }
       this.setState({
         items: currentItems
       });
     }
   }, {
-    key: 'renderItems',
+    key: "renderItems",
     value: function renderItems() {
       return this.state.items.map(function (item, index) {
         return _react2.default.createElement(
-          'div',
+          "div",
           { key: index },
           item
         );
       });
     }
   }, {
-    key: 'handleClick',
+    key: "handleClick",
     value: function handleClick() {
-      var dropdown = document.getElementById('dropdown');
-      this.displayProperty = 'block' === this.displayProperty ? 'none' : 'block';
+      var dropdown = document.getElementById("dropdown");
+      this.displayProperty = "block" === this.displayProperty ? "none" : "block";
       dropdown.style.display = this.displayProperty;
     }
   }, {
-    key: 'drawCog',
+    key: "drawCog",
     value: function drawCog() {
       var _this2 = this;
 
       return _react2.default.createElement(
-        'div',
-        { className: 'cog-main' },
-        _react2.default.createElement('img', { onClick: function onClick() {
+        "div",
+        { className: "cog-main" },
+        _react2.default.createElement("img", {
+          onClick: function onClick() {
             return _this2.handleClick();
-          }, className: 'cog-image', src: 'assets/images/wheel.png' }),
+          },
+          className: "cog-image",
+          src: "assets/images/wheel.png"
+        }),
         _react2.default.createElement(
-          'ul',
-          { className: 'cog-list', id: 'dropdown' },
+          "ul",
+          { className: "cog-list", id: "dropdown" },
           _react2.default.createElement(
-            'li',
+            "li",
             { onClick: function onClick() {
                 return _this2.handleAbout();
-              }, className: 'cog-list-el' },
-            'About'
+              }, className: "cog-list-el" },
+            "About"
           ),
           _react2.default.createElement(
-            'li',
-            { onClick: this.changeArtist, value: 'Mondrian', className: 'cog-list-el' },
-            'Mondrian'
+            "li",
+            {
+              onClick: this.changeArtist,
+              value: "Mondrian",
+              className: "cog-list-el"
+            },
+            "Mondrian"
           ),
           _react2.default.createElement(
-            'li',
-            { onClick: this.changeArtist, value: 'Rothko', className: 'cog-list-el' },
-            'Rothko'
+            "li",
+            {
+              onClick: this.changeArtist,
+              value: "Rothko",
+              className: "cog-list-el"
+            },
+            "Rothko"
+          ),
+          _react2.default.createElement(
+            "li",
+            {
+              onClick: this.changeArtist,
+              value: "Stella",
+              className: "cog-list-el"
+            },
+            "Stella"
           )
         ),
         this.drawAbout()
       );
     }
   }, {
-    key: 'handleAbout',
+    key: "handleAbout",
     value: function handleAbout() {
-      var about = document.getElementById('about');
-      this.displayAbout = 'block' === this.displayAbout ? 'none' : 'block';
+      var about = document.getElementById("about");
+      this.displayAbout = "block" === this.displayAbout ? "none" : "flex";
       about.style.display = this.displayAbout;
     }
   }, {
-    key: 'drawAbout',
+    key: "drawAbout",
     value: function drawAbout() {
       return _react2.default.createElement(
-        'div',
-        { className: 'cog-about-main', id: 'about' },
+        "div",
+        { className: "about-container", id: "about" },
         _react2.default.createElement(
-          'p',
-          { className: 'about-about' },
-          'About'
-        ),
-        _react2.default.createElement(
-          'p',
-          { className: 'about-name' },
-          'Created by Kyle McVeigh'
-        ),
-        _react2.default.createElement(
-          'p',
-          { className: 'about-year' },
-          '2018 \xA9'
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: 'about-img-container' },
+          "div",
+          { className: "cog-about-main" },
           _react2.default.createElement(
-            'a',
-            { href: 'https://github.com/Kyle01/' },
-            _react2.default.createElement('img', { className: 'about-img', src: 'assets/images/github_mark.png' })
+            "p",
+            { className: "about-about" },
+            "About"
           ),
           _react2.default.createElement(
-            'a',
-            { href: 'https://www.linkedin.com/in/kyle-mcveigh/' },
-            _react2.default.createElement('img', { className: 'about-img', src: 'assets/images/linkedin_mark.png' })
+            "p",
+            { className: "about-name" },
+            "Created by Kyle McVeigh"
           ),
           _react2.default.createElement(
-            'a',
-            { href: 'http://www.kylemcveigh.com' },
-            _react2.default.createElement('img', { className: 'about-img', src: 'assets/images/user_mark.png' })
+            "p",
+            { className: "about-year" },
+            "2020 \xA9"
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "about-img-container" },
+            _react2.default.createElement(
+              "a",
+              { href: "https://github.com/Kyle01/" },
+              _react2.default.createElement("img", {
+                className: "about-img",
+                src: "assets/images/github_mark.png"
+              })
+            ),
+            _react2.default.createElement(
+              "a",
+              { href: "https://www.linkedin.com/in/kyle-mcveigh/" },
+              _react2.default.createElement("img", {
+                className: "about-img",
+                src: "assets/images/linkedin_mark.png"
+              })
+            ),
+            _react2.default.createElement(
+              "a",
+              { href: "http://www.kylemcveigh.com" },
+              _react2.default.createElement("img", {
+                className: "about-img",
+                src: "assets/images/user_mark.png"
+              })
+            )
           )
         )
       );
     }
   }, {
-    key: 'changeArtist',
+    key: "changeArtist",
     value: function changeArtist(e) {
       e.preventDefault();
-      this.setState({ artist: e.target.innerText, items: this.populateItems(e.target.innerText) });
+      this.setState({
+        artist: e.target.innerText,
+        items: this.populateItems(e.target.innerText)
+      });
     }
   }, {
-    key: 'render',
+    key: "render",
     value: function render() {
       var _this3 = this;
 
       return _react2.default.createElement(
-        'div',
+        "div",
         null,
         this.drawCog(),
         this.renderItems(),
-        _react2.default.createElement(_reactWaypoint2.default, { onEnter: function onEnter() {
+        _react2.default.createElement(_reactWaypoint2.default, {
+          onEnter: function onEnter() {
             _this3.loadMoreItems();
-          }, threshold: 2.0 })
+          },
+          threshold: 2.0
+        })
       );
     }
   }]);
@@ -706,69 +866,6 @@ var Rothko = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = Rothko;
-
-/***/ }),
-
-/***/ "./frontend/components/villareal.jsx":
-/*!*******************************************!*\
-  !*** ./frontend/components/villareal.jsx ***!
-  \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Villareal = function (_React$Component) {
-  _inherits(Villareal, _React$Component);
-
-  function Villareal(props) {
-    _classCallCheck(this, Villareal);
-
-    return _possibleConstructorReturn(this, (Villareal.__proto__ || Object.getPrototypeOf(Villareal)).call(this, props));
-  }
-
-  _createClass(Villareal, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      this.updateCanvas();
-    }
-  }, {
-    key: 'updateCanvas',
-    value: function updateCanvas() {
-      var ctx = this.refs.canvas.getContext('2d');
-      ctx.fillStyle = '#000000';
-      ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement('canvas', { ref: 'canvas', width: window.innerWidth, height: window.innerHeight });
-    }
-  }]);
-
-  return Villareal;
-}(_react2.default.Component);
-
-exports.default = Villareal;
 
 /***/ }),
 
@@ -2089,7 +2186,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
           );
           err.name = 'Invariant Violation';
           throw err;
-        } else if ("development" !== 'production' && typeof console !== 'undefined') {
+        } else if ( true && typeof console !== 'undefined') {
           // Old behavior for people using React.PropTypes
           var cacheKey = componentName + ':' + propName;
           if (
@@ -9879,7 +9976,7 @@ function setInitialDOMProperties(tag, domElement, rootContainerElement, nextProp
       // We blacklist it here rather than in the property list because we emit it in SSR.
     } else if (registrationNameModules.hasOwnProperty(propKey)) {
       if (nextProp != null) {
-        if (true && typeof nextProp !== 'function') {
+        if ( true && typeof nextProp !== 'function') {
           warnForInvalidEventListener(propKey, nextProp);
         }
         ensureListeningTo(rootContainerElement, propKey);
@@ -10215,7 +10312,7 @@ function diffProperties$1(domElement, tag, lastRawProps, nextRawProps, rootConta
     } else if (registrationNameModules.hasOwnProperty(propKey)) {
       if (nextProp != null) {
         // We eagerly listen to this even though we haven't committed yet.
-        if (true && typeof nextProp !== 'function') {
+        if ( true && typeof nextProp !== 'function') {
           warnForInvalidEventListener(propKey, nextProp);
         }
         ensureListeningTo(rootContainerElement, propKey);
@@ -10397,14 +10494,14 @@ function diffHydratedProperties$1(domElement, tag, rawProps, parentNamespace, ro
       // TODO: Should we use domElement.firstChild.nodeValue to compare?
       if (typeof nextProp === 'string') {
         if (domElement.textContent !== nextProp) {
-          if (true && !suppressHydrationWarning) {
+          if ( true && !suppressHydrationWarning) {
             warnForTextDifference(domElement.textContent, nextProp);
           }
           updatePayload = [CHILDREN, nextProp];
         }
       } else if (typeof nextProp === 'number') {
         if (domElement.textContent !== '' + nextProp) {
-          if (true && !suppressHydrationWarning) {
+          if ( true && !suppressHydrationWarning) {
             warnForTextDifference(domElement.textContent, nextProp);
           }
           updatePayload = [CHILDREN, '' + nextProp];
@@ -10412,12 +10509,12 @@ function diffHydratedProperties$1(domElement, tag, rawProps, parentNamespace, ro
       }
     } else if (registrationNameModules.hasOwnProperty(propKey)) {
       if (nextProp != null) {
-        if (true && typeof nextProp !== 'function') {
+        if ( true && typeof nextProp !== 'function') {
           warnForInvalidEventListener(propKey, nextProp);
         }
         ensureListeningTo(rootContainerElement, propKey);
       }
-    } else if (true &&
+    } else if ( true &&
     // Convince Flow we've calculated it (it's DEV-only in this method.)
     typeof isCustomComponentTag === 'boolean') {
       // Validate that the properties correspond to their expected values.
@@ -11232,7 +11329,7 @@ function didNotMatchHydratedContainerTextInstance(parentContainer, textInstance,
 }
 
 function didNotMatchHydratedTextInstance(parentType, parentProps, parentInstance, textInstance, text) {
-  if (true && parentProps[SUPPRESS_HYDRATION_WARNING] !== true) {
+  if ( true && parentProps[SUPPRESS_HYDRATION_WARNING] !== true) {
     warnForUnmatchedText(textInstance, text);
   }
 }
@@ -11248,7 +11345,7 @@ function didNotHydrateContainerInstance(parentContainer, instance) {
 }
 
 function didNotHydrateInstance(parentType, parentProps, parentInstance, instance) {
-  if (true && parentProps[SUPPRESS_HYDRATION_WARNING] !== true) {
+  if ( true && parentProps[SUPPRESS_HYDRATION_WARNING] !== true) {
     if (instance.nodeType === 1) {
       warnForDeletedHydratableElement(parentInstance, instance);
     } else {
@@ -11270,13 +11367,13 @@ function didNotFindHydratableContainerTextInstance(parentContainer, text) {
 }
 
 function didNotFindHydratableInstance(parentType, parentProps, parentInstance, type, props) {
-  if (true && parentProps[SUPPRESS_HYDRATION_WARNING] !== true) {
+  if ( true && parentProps[SUPPRESS_HYDRATION_WARNING] !== true) {
     warnForInsertedHydratedElement(parentInstance, type, props);
   }
 }
 
 function didNotFindHydratableTextInstance(parentType, parentProps, parentInstance, text) {
-  if (true && parentProps[SUPPRESS_HYDRATION_WARNING] !== true) {
+  if ( true && parentProps[SUPPRESS_HYDRATION_WARNING] !== true) {
     warnForInsertedHydratedText(parentInstance, text);
   }
 }
@@ -12433,7 +12530,7 @@ function catchErrors(fn) {
     try {
       return fn(arg);
     } catch (err) {
-      if (true && !hasLoggedError) {
+      if ( true && !hasLoggedError) {
         hasLoggedError = true;
         warning(false, 'React DevTools encountered an error: %s', err);
       }
@@ -17800,7 +17897,7 @@ var replayUnitOfWork = void 0;
 var isReplayingFailedUnitOfWork = void 0;
 var originalReplayError = void 0;
 var rethrowOriginalError = void 0;
-if (true && replayFailedUnitOfWorkWithInvokeGuardedCallback) {
+if ( true && replayFailedUnitOfWorkWithInvokeGuardedCallback) {
   stashedWorkInProgressProperties = null;
   isReplayingFailedUnitOfWork = false;
   originalReplayError = null;
@@ -18163,7 +18260,7 @@ function commitRoot(finishedWork) {
   if (typeof onCommitRoot === 'function') {
     onCommitRoot(finishedWork.stateNode);
   }
-  if (true && ReactFiberInstrumentation_1.debugTool) {
+  if ( true && ReactFiberInstrumentation_1.debugTool) {
     ReactFiberInstrumentation_1.debugTool.onCommitWork(finishedWork);
   }
 
@@ -18253,7 +18350,7 @@ function completeUnitOfWork(workInProgress) {
 
       if (next !== null) {
         stopWorkTimer(workInProgress);
-        if (true && ReactFiberInstrumentation_1.debugTool) {
+        if ( true && ReactFiberInstrumentation_1.debugTool) {
           ReactFiberInstrumentation_1.debugTool.onCompleteWork(workInProgress);
         }
         // If completing this work spawned new work, do that next. We'll come
@@ -18296,7 +18393,7 @@ function completeUnitOfWork(workInProgress) {
         }
       }
 
-      if (true && ReactFiberInstrumentation_1.debugTool) {
+      if ( true && ReactFiberInstrumentation_1.debugTool) {
         ReactFiberInstrumentation_1.debugTool.onCompleteWork(workInProgress);
       }
 
@@ -18331,7 +18428,7 @@ function completeUnitOfWork(workInProgress) {
 
       if (_next !== null) {
         stopWorkTimer(workInProgress);
-        if (true && ReactFiberInstrumentation_1.debugTool) {
+        if ( true && ReactFiberInstrumentation_1.debugTool) {
           ReactFiberInstrumentation_1.debugTool.onCompleteWork(workInProgress);
         }
         // If completing this work spawned new work, do that next. We'll come
@@ -18348,7 +18445,7 @@ function completeUnitOfWork(workInProgress) {
         returnFiber.effectTag |= Incomplete;
       }
 
-      if (true && ReactFiberInstrumentation_1.debugTool) {
+      if ( true && ReactFiberInstrumentation_1.debugTool) {
         ReactFiberInstrumentation_1.debugTool.onCompleteWork(workInProgress);
       }
 
@@ -18384,7 +18481,7 @@ function performUnitOfWork(workInProgress) {
     ReactDebugCurrentFiber.setCurrentFiber(workInProgress);
   }
 
-  if (true && replayFailedUnitOfWorkWithInvokeGuardedCallback) {
+  if ( true && replayFailedUnitOfWorkWithInvokeGuardedCallback) {
     stashedWorkInProgressProperties = assignFiberPropertiesInDEV(stashedWorkInProgressProperties, workInProgress);
   }
 
@@ -18415,7 +18512,7 @@ function performUnitOfWork(workInProgress) {
       rethrowOriginalError();
     }
   }
-  if (true && ReactFiberInstrumentation_1.debugTool) {
+  if ( true && ReactFiberInstrumentation_1.debugTool) {
     ReactFiberInstrumentation_1.debugTool.onBeginWork(workInProgress);
   }
 
@@ -18492,7 +18589,7 @@ function renderRoot(root, expirationTime, isAsync) {
         }
 
         var failedUnitOfWork = nextUnitOfWork;
-        if (true && replayFailedUnitOfWorkWithInvokeGuardedCallback) {
+        if ( true && replayFailedUnitOfWorkWithInvokeGuardedCallback) {
           replayUnitOfWork(failedUnitOfWork, thrownValue, isAsync);
         }
 
@@ -20319,7 +20416,7 @@ var Waypoint = function (_BaseClass) {
           _this2._handleScroll = _this2._handleScroll.bind(_this2);
           _this2.scrollableAncestor = _this2._findScrollableAncestor();
 
-          if ("development" !== 'production' && _this2.props.debug) {
+          if ( true && _this2.props.debug) {
             debugLog('scrollableAncestor', _this2.scrollableAncestor);
           }
 
@@ -20467,7 +20564,7 @@ var Waypoint = function (_BaseClass) {
         var currentPosition = getCurrentPosition(bounds);
         var previousPosition = this._previousPosition;
 
-        if ("development" !== 'production' && this.props.debug) {
+        if ( true && this.props.debug) {
           debugLog('currentPosition', currentPosition);
           debugLog('previousPosition', previousPosition);
         }
@@ -20551,7 +20648,7 @@ var Waypoint = function (_BaseClass) {
           contextScrollTop = horizontal ? this.scrollableAncestor.getBoundingClientRect().left : this.scrollableAncestor.getBoundingClientRect().top;
         }
 
-        if ("development" !== 'production' && this.props.debug) {
+        if ( true && this.props.debug) {
           debugLog('waypoint top', waypointTop);
           debugLog('waypoint bottom', waypointBottom);
           debugLog('scrollableAncestor height', contextHeight);
@@ -22194,7 +22291,7 @@ g = (function() {
 
 try {
 	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1, eval)("this");
+	g = g || new Function("return this")();
 } catch (e) {
 	// This works if the window reference is available
 	if (typeof window === "object") g = window;
