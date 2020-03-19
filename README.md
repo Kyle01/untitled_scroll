@@ -8,6 +8,11 @@ Untitled scroll is a web application that generates Modern art using predefined 
 
 I'm a huge art fan of modern and post modern art and I wanted to build something that I would enjoy.
 
+## To develope
+
+- Run `yarn webpack`
+- Open `index.html` in the browser
+
 ## Technologies
 
 - Frontend:

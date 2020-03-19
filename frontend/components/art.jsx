@@ -4,6 +4,7 @@ import Waypoint from "react-waypoint";
 import Mondrian from "./mondrian";
 import Rothko from "./rothko";
 import Stella from "./Stella";
+import Kusama from "./kusama";
 
 //Other artist: Leo Villareal
 
@@ -16,10 +17,10 @@ class Art extends React.Component {
     this.displayAbout = "none";
 
     let currentItems = [];
-    currentItems.push(<Mondrian />);
-    currentItems.push(<Mondrian />);
-    currentItems.push(<Mondrian />);
-    this.state = { items: currentItems, artist: "Mondrian" };
+    currentItems.push(<Kusama />);
+    currentItems.push(<Kusama />);
+    currentItems.push(<Kusama />);
+    this.state = { items: currentItems, artist: "Kusama" };
 
     this.changeArtist = this.changeArtist.bind(this);
   }
@@ -43,6 +44,11 @@ class Art extends React.Component {
         currentItems.push(<Stella />);
         currentItems.push(<Stella />);
         break;
+      case "Kusama":
+        currentItems.push(<Kusama />);
+        currentItems.push(<Kusama />);
+        currentItems.push(<Kusama />);
+        break;
     }
 
     return currentItems;
@@ -61,6 +67,10 @@ class Art extends React.Component {
     let currentItems = this.state.items;
 
     switch (this.state.artist) {
+      case "Kusama":
+        currentItems.push(<Kusama />);
+        currentItems.push(<Kusama />);
+        break;
       case "Rothko":
         currentItems.push(<Rothko />);
         currentItems.push(<Rothko />);
@@ -103,25 +113,16 @@ class Art extends React.Component {
           <li onClick={() => this.handleAbout()} className="cog-list-el">
             About
           </li>
-          <li
-            onClick={this.changeArtist}
-            value="Mondrian"
-            className="cog-list-el"
-          >
+          <li onClick={this.changeArtist} className="cog-list-el">
+            Kusama
+          </li>
+          <li onClick={this.changeArtist} className="cog-list-el">
             Mondrian
           </li>
-          <li
-            onClick={this.changeArtist}
-            value="Rothko"
-            className="cog-list-el"
-          >
+          <li onClick={this.changeArtist} className="cog-list-el">
             Rothko
           </li>
-          <li
-            onClick={this.changeArtist}
-            value="Stella"
-            className="cog-list-el"
-          >
+          <li onClick={this.changeArtist} className="cog-list-el">
             Stella
           </li>
         </ul>
